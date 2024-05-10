@@ -1,13 +1,15 @@
 function searchReset(){
-    let newSearchBtn = document.getElementById('navBar');
-    newSearchBtn.addEventListener('click', () => {
-        document.getElementById('responseDiv').innerHTML = '';
-        document.querySelector('div.formDiv').classList.remove('invisible');
-        document.getElementById('header').removeChild(navBar);
-        document.getElementById('header').classList.remove('headerOnSearch');
-        let category = document.getElementById('category');
-        category.value = '';
-    })
+    document.getElementById('header').addEventListener('click', (event) => {
+        if (event.target.id === 'navBar' || event.target.id === 'searchInfo') {
+            document.getElementById('header').classList.remove('headerOnSearch');
+            document.getElementById('responseDiv').innerHTML = '';
+            document.querySelector('div.formDiv').classList.remove('invisible');
+            let category = document.getElementById('category');
+            category.value = '';
+            // Remove the navBar and searchInfo elements
+            event.target.remove();
+        }
+    });
 }
 
 

@@ -14,6 +14,8 @@
     }
 }
 
+//classes for when the search has been initated and nav has been appended
+
 .headerOnSearch {
     background-color: $bgColor;
     padding: 1.5rem 1.2rem 0.5rem 1.5rem;
@@ -26,49 +28,56 @@
         padding-left: 2.5rem;
         border-left: 4px solid $mildBlack;
     }
+    
+    .navBar{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .imgSearchStyle {
+        margin-right: 1rem;
+        position: relative;
+        transition: opacity 0.3s ease;
+        opacity: 1; 
+    }
+    
+    .heading {
+        color: $brown;
+        text-decoration-line: underline;
+        text-align: center;
+        border: 3px solid $mildBlack;
+        border-radius: 15px;
+        background-color: white;
+        border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;
+    }
+    
+    .searchInfo {
+        position: relative;
+        font-size: 1rem;
+        left:30px;
+        text-align: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    #lensSearch {
+        margin-right: 1rem;
+        position: relative;
+        transition: opacity 0.3s ease;
+        opacity: 1;
+    }
+    
+    
+    #lensSearch:hover {
+        opacity: 0;
+    }
+    
+    #lensSearch:hover + .searchInfo {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
-//classes for nav as it is appended
-.navBar{
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-}
-.imgSearchStyle {
-    margin-right: 1rem;
-    position: relative;
-    transition: opacity 0.3s ease; /* Adding a transition for smooth fading */
-    opacity: 1; /* Initially set opacity to 1 */
-}
-
-.heading {
-    color: $brown;
-    text-decoration-line: underline;
-    text-align: center;
-    border: 3px solid $mildBlack;
-    border-radius: 15px;
-    background-color: white;
-    border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;
-}
-
-.searchInfo {
-    position: relative;
-    font-size: 1rem;
-    left:30px;
-    text-align: center;
-    visibility: hidden;
-    opacity: 0; /* Initially set opacity to 0 */
-    transition: opacity 0.3s ease; /* Adding a transition for smooth fading */
-
-}
-
-.imgSearchStyle:hover {
-    opacity: 0; /* When hovered over, make the imgSearchStyle disappear by setting opacity to 0 */
-}
-
-
-.imgSearchStyle:hover + .searchInfo {
-    visibility: visible;
-    opacity: 1; /* When imgSearchStyle is hovered over, make the searchInfo appear by setting opacity to 1 */
-}

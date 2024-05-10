@@ -7,15 +7,19 @@ import { data } from "jquery";
 
 function getSubject(key){
     axios.get(`https://openlibrary.org/subjects/${key}.json`).then(resp => {
-        resp.json;
-        
-        let works = resp.data.works;
+        let data = resp.data; 
+        let works = data.works;
         let caption = '';
         let writers = '';
         let bookEndPoint = '';
         console.log(works);
-        for(let i = 0; i < works.length; i++){
-            caption = works[i].title;
+        if(works.length == 0) {
+            alert(`The search for ${key} has not produced any result.`);
+            document.getElementById('category').value = '';
+        } else {
+
+            for(let i = 0; i < works.length; i++){
+                caption = works[i].title;
             bookEndPoint = 'https://openlibrary.org' + works[i].key;
             console.log(bookEndPoint);
             if(works[i].authors.length > 1){
@@ -27,14 +31,18 @@ function getSubject(key){
                 writers = works[i].authors[0].name;
             }
             createCard(`result${[i]}`, writers, caption, `https://openlibrary.org${works[i].key}`);
-
         }
         document.querySelector('div.formDiv').classList.add('invisible');
         
         addNavBar();
         setTop();
         showResult();
+        }   
+    })
+    .catch(error => {
+        console.error('Error fetching subject data:', error);
     });
+
 }
 
 export default getSubject;
