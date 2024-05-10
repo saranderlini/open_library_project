@@ -8,13 +8,13 @@ let navBar = document.createElement('nav');
 let searchInfo = document.createElement('p');
 
 function addNavBar() {
-    navBar.innerHTML = '<img src="' + magnifyingGlassImg + '" width="30px" height="30px">';
+    navBar.innerHTML = '<img id="lensSearch" src="' + magnifyingGlassImg + '" width="30px" height="30px">';
     searchInfo.innerText = 'New search!';
     settingAttributeAndClass(navBar, 'id', 'navBar', 'imgSearchStyle');
     settingAttributeAndClass(header, '', '', 'headerOnSearch');
     settingAttributeAndClass(searchInfo, 'id', 'searchInfo', 'searchInfo');
     
-    document.getElementById('header').append(navBar, searchInfo);
+    document.getElementById('header').appendChild(navBar).appendChild(searchInfo);
     searchReset();
 }
 
