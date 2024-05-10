@@ -1,0 +1,527 @@
+h1 {
+  font-size: 3rem;
+  font-weight: 100;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-style: italic;
+  font-weight: 200;
+}
+
+p {
+  font-size: 1.125rem;
+  margin-bottom: 0rem;
+}
+
+.antonio-sans-thin {
+  font-family: "Antonio", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.antonio-sans-extralight {
+  font-family: "Antonio", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.antonio-sans-light {
+  font-family: "Antonio", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.antonio-sans-regular {
+  font-family: "Antonio", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.antonio-sans-medium {
+  font-family: "Antonio", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.antonio-sans-semibold {
+  font-family: "Antonio", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.antonio-sans-bold {
+  font-family: "Antonio", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ibm-plex-sans-thin {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.ibm-plex-sans-extralight {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.ibm-plex-sans-light {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ibm-plex-sans-regular {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ibm-plex-sans-medium {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ibm-plex-sans-semibold {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.ibm-plex-sans-bold {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ibm-plex-sans-thin-italic {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.ibm-plex-sans-extralight-italic {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.ibm-plex-sans-light-italic {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ibm-plex-sans-regular-italic {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ibm-plex-sans-medium-italic {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ibm-plex-sans-semibold-italic {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.ibm-plex-sans-bold-italic {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.glass {
+  background: rgba(249, 249, 249, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+}
+
+.error {
+  border-color: #992800;
+  font-style: italic;
+}
+
+.invisible {
+  visibility: collapse;
+}
+
+.cardStyle {
+  align-items: center;
+  background: rgba(255, 252, 252, 0.8588235294);
+  border-radius: 15px;
+  box-shadow: 1px 3px rgba(0, 0, 0, 0.1);
+  color: #212121;
+  justify-content: space-between;
+  margin: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+}
+.cardStyle .arrowButton {
+  border: none;
+  background: none;
+}
+.cardStyle .opened {
+  transform: rotate(90deg);
+}
+.cardStyle .detailsShown {
+  color: #212121;
+  text-align: justify;
+  line-height: 1.7rem;
+}
+
+.headerStart {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  margin: auto;
+  padding: 2rem 1.5rem 1rem;
+  right: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 10;
+}
+.headerStart h1 {
+  text-wrap: nowrap;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.headerOnSearch {
+  background-color: #fff4db;
+  padding: 1.5rem 1.2rem 0.5rem 1.5rem;
+  width: 100%;
+  flex-direction: row-reverse;
+  align-items: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+.headerOnSearch h1 {
+  padding-right: 1rem;
+  padding-left: 2.5rem;
+  border-left: 4px solid #212121;
+}
+.headerOnSearch .imgSearchStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 2rem;
+}
+.headerOnSearch .heading {
+  color: #543622;
+  text-decoration-line: underline;
+  text-align: center;
+  border: 3px solid #212121;
+  border-radius: 15px;
+  background-color: white;
+  -o-border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;
+     border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;
+}
+.headerOnSearch #lensSearch {
+  margin-right: 1rem;
+  position: relative;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+.headerOnSearch .searchInfo {
+  position: relative;
+  font-family: "Antonio", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  bottom: 30px;
+  left: 30px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.headerOnSearch #lensSearch:hover + .searchInfo {
+  visibility: visible;
+  opacity: 1;
+}
+
+.div-bg {
+  position: relative;
+}
+
+.div-bg::before {
+  content: "";
+  position: fixed;
+  left: -150px;
+  right: 0;
+  z-index: -1;
+  display: block;
+  background-image: url("../assets/bg-retro.png");
+  background-size: cover;
+  height: 100%;
+}
+
+main {
+  color: #e4e4e4;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  top: 15%;
+  overflow-y: auto;
+}
+main .formDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .outer {
+  border: 3px solid #e4e4e4;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1.5rem;
+}
+main .form {
+  color: #212121;
+  flex-direction: column;
+  justify-content: space-around;
+}
+main .form .labelFont {
+  color: #212121;
+}
+main .form .inputStyle {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+}
+main .form .btnSearch {
+  background: rgba(255, 193, 7, 0.8);
+  border: 2px solid rgba(255, 193, 7, 0.8);
+  box-shadow: 1px 3px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+main .form .btnSearch:hover {
+  background: rgb(254, 174, 0);
+  border-color: rgb(254, 174, 0);
+}
+main .form .btnSearch:active {
+  background-color: #3c7f72;
+  border-width: 2px;
+  border-color: #3c7f72;
+  color: #e4e4e4;
+}
+
+/* Small devices (mobile phones, 0 and up) */
+/* No media query since this is the default in Foundation */
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header.headerOnSearch {
+    padding: 0.6rem 2.5rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 2rem;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  #responseDiv {
+    margin-top: -2rem;
+  }
+  #responseDiv .outer {
+    margin: 4rem;
+  }
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) and (orientation: portrait) {
+  header h1 {
+    font-size: 4rem;
+  }
+  .formDiv {
+    top: 1rem;
+    font-size: 1.5rem;
+  }
+  #responseDiv {
+    line-height: 1.7rem;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+  header.headerOnSearch {
+    padding: 0.6rem 2.5rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 2rem;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  #responseDiv {
+    margin-top: -2rem;
+  }
+  #responseDiv .outer {
+    margin: 4rem;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  header h1 {
+    font-size: 3.5rem;
+    padding: 3rem;
+  }
+  header.headerOnSearch {
+    padding: 0.6rem 2.5rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 2.5rem;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  .formDiv .labelFont {
+    font-size: 1.3rem;
+  }
+  .formDiv .btnSearch {
+    font-size: 1.25rem;
+  }
+  .formDiv #category {
+    font-size: 1.2rem;
+  }
+  #responseDiv {
+    margin-top: -3rem;
+    line-height: 2rem;
+  }
+  #responseDiv .outer {
+    margin: 5% 20%;
+  }
+  #responseDiv h3 {
+    padding: 0.6rem;
+    font-size: 1.6rem;
+  }
+  #responseDiv p {
+    font-size: 1rem;
+  }
+  #responseDiv .detailsShown {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+}
+@media only screen and (min-width: 1201px) and (max-width: 1400px) {
+  header h1 {
+    font-size: 4rem;
+    padding: 4rem;
+  }
+  header.headerOnSearch {
+    padding: 2rem 6rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 3.5rem;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  .formDiv .labelFont {
+    font-size: 1.6rem;
+  }
+  .formDiv .btnSearch {
+    font-size: 1.4rem;
+  }
+  .formDiv #category {
+    font-size: 1.35rem;
+  }
+  .formDiv .outer {
+    padding: 3rem 2rem;
+  }
+  #responseDiv {
+    margin-top: -3rem;
+    line-height: 2rem;
+  }
+  #responseDiv .outer {
+    margin: 5% 20%;
+  }
+  #responseDiv .outer {
+    margin: 5% 20%;
+  }
+  #responseDiv h3 {
+    padding: 0.8rem;
+    font-size: 1.8rem;
+  }
+  #responseDiv p {
+    font-size: 1.3rem;
+  }
+  #responseDiv .detailsShown {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+}
+@media only screen and (min-width: 1401px) {
+  header h1 {
+    font-size: 3rem;
+    padding: 2rem 4rem;
+  }
+  header.headerOnSearch {
+    padding: 1rem 6rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 2rem;
+  }
+  header.headerOnSearch .searchInfo {
+    position: relative;
+    font-size: 1.5rem;
+    right: 0;
+    top: 0;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  .formDiv .labelFont {
+    font-size: 1.6rem;
+  }
+  .formDiv .btnSearch {
+    font-size: 1.4rem;
+  }
+  .formDiv #category {
+    font-size: 1.35rem;
+  }
+  .formDiv .outer {
+    padding: 3rem 2rem;
+  }
+  #responseDiv {
+    margin-top: -3rem;
+    line-height: 2rem;
+  }
+  #responseDiv .outer {
+    margin: 5% 20%;
+  }
+  #responseDiv h3 {
+    padding: 1rem;
+    font-size: 2rem;
+  }
+  #responseDiv p {
+    font-size: 1.5rem;
+  }
+  #responseDiv .detailsShown {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}/*# sourceMappingURL=main.css.map */
