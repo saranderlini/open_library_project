@@ -7261,16 +7261,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _assets_search_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/search.png */ "./src/assets/search.png");
+/* harmony import */ var _searchReset__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./searchReset */ "./src/js/searchReset.js");
+
 
 
 
 var header = document.getElementById('header');
 var navBar = document.createElement('nav');
-var divSearch = document.createElement('div');
 var searchInfo = document.createElement('p');
-divSearch.innerHTML = '<img src="' + {
-  magnifyingGlassImg: _assets_search_png__WEBPACK_IMPORTED_MODULE_2__
-} + '" width = 20px height = 20px >';
+function addNavBar() {
+  navBar.innerHTML = '<img id="lensSearch" src="' + _assets_search_png__WEBPACK_IMPORTED_MODULE_2__ + '" width="30px" height="30px">';
+  searchInfo.innerText = 'New search!';
+  settingAttributeAndClass(navBar, 'id', 'navBar', 'imgSearchStyle');
+  settingAttributeAndClass(header, '', '', 'headerOnSearch');
+  settingAttributeAndClass(searchInfo, 'id', 'searchInfo', 'searchInfo');
+  document.getElementById('header').appendChild(navBar).appendChild(searchInfo);
+  (0,_searchReset__WEBPACK_IMPORTED_MODULE_3__["default"])();
+}
 function settingAttributeAndClass(elem, attributeType, attributeDesc, className) {
   if (attributeType) {
     elem.setAttribute(attributeType, attributeDesc);
@@ -7279,11 +7286,7 @@ function settingAttributeAndClass(elem, attributeType, attributeDesc, className)
     elem.classList.add(className);
   }
 }
-settingAttributeAndClass(header, '', '', 'headerOnSearch');
-// settingAttributeAndClass(imgSearch, 'src', '{magnifyingGlassImg}', 'searchImg');
-
-document.getElementById('header').appendChild(navBar).append(divSearch);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (settingAttributeAndClass);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addNavBar);
 
 /***/ }),
 
@@ -7301,16 +7304,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _assets_arrow_right_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/arrow-right.png */ "./src/assets/arrow-right.png");
-/* harmony import */ var _setTopToMain__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./setTopToMain */ "./src/js/setTopToMain.js");
-/* harmony import */ var _addNavBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./addNavBar */ "./src/js/addNavBar.js");
-
-
 
 
 
 //function for creation of card, then called inside the loop, for reading data gathered by Axios fetch
 function createCard(description, mainAuth, mainName, mainUrl) {
-  var responseDiv = document.getElementById('responseDiv');
+  // let responseDiv = document.getElementById('responseDiv');
   var bookCard = document.createElement('div');
   bookCard.setAttribute('name', 'card');
 
@@ -7322,12 +7321,14 @@ function createCard(description, mainAuth, mainName, mainUrl) {
   var bookUrlKey = document.createElement('button');
   bookCard.classList.add('glass', 'outer', 'cardStyle');
   bookCard.setAttribute('id', description);
-
-  // styleCard(mainAuth, 'authorStyle', mainName, 'titleStyle', '../templateTwo.html');
   styleCard(mainAuth, 'ibm-plex-sans-medium-italic', mainName, 'antonio-sans-semibold', mainUrl);
 
+  //append elements
+  document.getElementById('responseDiv').appendChild(bookCard);
+  bookCard.appendChild(firstLine).append(firstSec, bookUrlKey);
+  firstSec.append(mainBookTitle, mainBookAuth);
+
   //Function to style and add innerHTML to card elements
-  //changed to redirect the user towards a new page after clicking the arrow button. If you want to change it, just uncomment 
   function styleCard(bookAuth, authStl, bookTitle, ttlStl /*, newPage*/) {
     mainBookAuth.innerHTML = bookAuth;
     mainBookAuth.classList.add(authStl);
@@ -7337,15 +7338,9 @@ function createCard(description, mainAuth, mainName, mainUrl) {
     bookUrlKey.innerHTML = '<img src="' + _assets_arrow_right_png__WEBPACK_IMPORTED_MODULE_1__ + '" height="20px" width="20px">';
     bookUrlKey.classList.add('btn', 'arrowButton');
     responseDiv.style.position = 'absolute';
+    responseDiv.style.left = '0';
+    responseDiv.style.right = '0';
   }
-
-  //append elements
-  responseDiv.appendChild(bookCard);
-  firstSec.append(mainBookTitle, mainBookAuth);
-  firstLine.append(firstSec, bookUrlKey);
-  bookCard.append(firstLine);
-  (0,_setTopToMain__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  // settingAttributeAndClass();
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCard);
 
@@ -7458,41 +7453,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var _createCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createCard */ "./src/js/createCard.js");
-/* harmony import */ var _showResult__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./showResult */ "./src/js/showResult.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _addNavBar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addNavBar */ "./src/js/addNavBar.js");
+/* harmony import */ var _setTopToMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setTopToMain */ "./src/js/setTopToMain.js");
+/* harmony import */ var _createCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createCard */ "./src/js/createCard.js");
+/* harmony import */ var _showResult__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./showResult */ "./src/js/showResult.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
+
+
 
 
 
 
 function getSubject(key) {
-  axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("https://openlibrary.org/subjects/".concat(key, ".json")).then(function (resp) {
-    resp.json;
-    var works = resp.data.works;
+  axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("https://openlibrary.org/subjects/".concat(key, ".json")).then(function (resp) {
+    var data = resp.data;
+    var works = data.works;
     var caption = '';
     var writers = '';
     var bookEndPoint = '';
     console.log(works);
-    for (var i = 0; i < works.length; i++) {
-      caption = works[i].title;
-      bookEndPoint = 'https://openlibrary.org' + works[i].key;
-      console.log(bookEndPoint);
-      if (works[i].authors.length > 1) {
-        for (var j = 1; j < works[i].authors.length; j++) {
-          writers += works[i].authors[j].name + ', ';
+    if (works.length == 0) {
+      alert("The search for ".concat(key, " has not produced any result."));
+      document.getElementById('category').value = '';
+    } else {
+      for (var i = 0; i < works.length; i++) {
+        caption = works[i].title;
+        bookEndPoint = 'https://openlibrary.org' + works[i].key;
+        console.log(bookEndPoint);
+        if (works[i].authors.length > 1) {
+          for (var j = 1; j < works[i].authors.length; j++) {
+            writers += works[i].authors[j].name + ', ';
+          }
+          writers = writers.slice(0, writers.lastIndexOf(', '));
+        } else {
+          writers = works[i].authors[0].name;
         }
-        writers = writers.slice(0, writers.lastIndexOf(', '));
-      } else {
-        writers = works[i].authors[0].name;
+        (0,_createCard__WEBPACK_IMPORTED_MODULE_2__["default"])("result".concat([i]), writers, caption, "https://openlibrary.org".concat(works[i].key));
       }
-      (0,_createCard__WEBPACK_IMPORTED_MODULE_0__["default"])("result".concat([i]), writers, caption, "https://openlibrary.org".concat(works[i].key));
+      document.querySelector('div.formDiv').classList.add('invisible');
+      (0,_addNavBar__WEBPACK_IMPORTED_MODULE_0__["default"])();
+      (0,_setTopToMain__WEBPACK_IMPORTED_MODULE_1__["default"])();
+      (0,_showResult__WEBPACK_IMPORTED_MODULE_3__["default"])();
     }
-    (0,_showResult__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  })["catch"](function (error) {
+    console.error('Error fetching subject data:', error);
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getSubject);
+
+/***/ }),
+
+/***/ "./src/js/searchReset.js":
+/*!*******************************!*\
+  !*** ./src/js/searchReset.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function searchReset() {
+  document.getElementById('header').addEventListener('click', function (event) {
+    if (event.target.id === 'navBar' || event.target.id == 'lensSearch') {
+      document.getElementById('header').classList.remove('headerOnSearch');
+      document.getElementById('responseDiv').innerHTML = '';
+      document.querySelector('div.formDiv').classList.remove('invisible');
+      var category = document.getElementById('category');
+      category.value = '';
+      // Remove the navBar and searchInfo elements
+      event.target.remove();
+    }
+    if (document.getElementById('lensSearch') == null && document.getElementById('searchInfo')) {
+      document.getElementById('navBar').remove(document.getElementById('searchInfo'));
+    }
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchReset);
 
 /***/ }),
 
@@ -7512,7 +7552,6 @@ var headerHeight = header.offsetHeight;
 var respDiv = document.getElementById('responseDiv');
 function setTop() {
   respDiv.style.setProperty('top', "".concat(headerHeight, "px"));
-  console.log(respDiv.style.top);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (setTop);
 
@@ -7530,34 +7569,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/*
+import axios from "axios";
 
-var bookDescription = '';
-var detailsDev = '';
+let bookDescription = '';
+let detailsDev = '';
+
+function showResult(){
+    let arrowButton = document.querySelectorAll('button.arrowButton');
+    arrowButton.forEach(item => {
+        item.addEventListener('click', () => {
+            if(item.parentElement.lastChild.classList.contains('detailsShown')) {
+                item.classList.remove('opened');
+                detailsDev.classList.remove('detailsShown', 'ibm-plex-sans-regular');
+                item.parentElement.removeChild(detailsDev);
+            } else {
+                axios.get(item.name)
+                .then(resp => {
+                    let data = resp.data;
+                    if(data.description.value == undefined || data.description.value == '') {
+                        bookDescription = data.description;
+                    } else {
+                        bookDescription = data.description.value;
+                    }
+                    item.classList.add('opened')
+                    detailsDev = document.createElement('div');
+                    detailsDev.classList.add('detailsShown', 'ibm-plex-sans-regular');
+                    detailsDev.innerHTML = bookDescription;
+    
+                    item.parentElement.appendChild(detailsDev);
+                })
+            }
+        })
+    })
+}
+
+export default showResult;
+*/
+
+
 function showResult() {
   var arrowButton = document.querySelectorAll('button.arrowButton');
   arrowButton.forEach(function (item) {
     item.addEventListener('click', function () {
       if (item.parentElement.lastChild.classList.contains('detailsShown')) {
         item.classList.remove('opened');
-        detailsDev.classList.remove('detailsShown', 'ibm-plex-sans-regular');
-        item.parentElement.removeChild(detailsDev);
+        item.parentElement.removeChild(item.parentElement.lastChild);
       } else {
         axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(item.name).then(function (resp) {
-          resp.json;
-          if (resp.data.description.value == undefined || resp.data.description.value == '') {
-            bookDescription = resp.data.description;
+          if (resp.data.description && resp.data.description.value) {
+            createDetailsDiv(resp.data.description.value, item.parentElement);
           } else {
-            bookDescription = resp.data.description.value;
+            createDetailsDiv(resp.data.description, item.parentElement);
           }
           item.classList.add('opened');
-          detailsDev = document.createElement('div');
-          detailsDev.classList.add('detailsShown', 'ibm-plex-sans-regular');
-          detailsDev.innerHTML = bookDescription;
-          item.parentElement.appendChild(detailsDev);
+        })["catch"](function (error) {
+          console.error('Error fetching book details:', error);
+          // Optionally, you can handle the error here, for example, by displaying a message to the user.
+          createDetailsDiv('Description not currently available.', item.parentElement);
         });
       }
     });
   });
+}
+function createDetailsDiv(description, parentElement) {
+  var detailsDev = document.createElement('div');
+  detailsDev.classList.add('detailsShown', 'ibm-plex-sans-regular');
+  detailsDev.innerHTML = description;
+  parentElement.appendChild(detailsDev);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (showResult);
 
@@ -8693,6 +8772,10 @@ p {
   font-style: italic;
 }
 
+.invisible {
+  visibility: collapse;
+}
+
 .cardStyle {
   align-items: center;
   background: rgba(255, 252, 252, 0.8588235294);
@@ -8718,9 +8801,10 @@ p {
 .cardStyle .detailsShown {
   color: #212121;
   text-align: justify;
+  line-height: 1.7rem;
 }
 
-#header {
+.headerStart {
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -8730,19 +8814,33 @@ p {
   width: fit-content;
   z-index: 10;
 }
+.headerStart h1 {
+  text-wrap: nowrap;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
 
 .headerOnSearch {
   background-color: #fff4db;
-  padding-top: 1.5rem;
+  padding: 1.5rem 1.2rem 0.5rem 1.5rem;
+  width: 100%;
+  flex-direction: row-reverse;
+  align-items: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
-
-.searchImg {
-  width: 20px;
-  height: 20px;
-  border: 5px solid red;
+.headerOnSearch h1 {
+  padding-right: 1rem;
+  padding-left: 2.5rem;
+  border-left: 4px solid #212121;
 }
-
-.heading {
+.headerOnSearch .imgSearchStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 2rem;
+}
+.headerOnSearch .heading {
   color: #543622;
   text-decoration-line: underline;
   text-align: center;
@@ -8750,6 +8848,28 @@ p {
   border-radius: 15px;
   background-color: white;
   border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;
+}
+.headerOnSearch #lensSearch {
+  margin-right: 1rem;
+  position: relative;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+.headerOnSearch .searchInfo {
+  position: relative;
+  font-family: "Antonio", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  bottom: 30px;
+  left: 30px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.headerOnSearch #lensSearch:hover + .searchInfo {
+  visibility: visible;
+  opacity: 1;
 }
 
 .div-bg {
@@ -8787,8 +8907,8 @@ main .formDiv {
 main .outer {
   border: 3px solid #e4e4e4;
   border-radius: 15px;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 1.5rem;
+  margin: 1.5rem;
 }
 main .form {
   color: #212121;
@@ -8819,7 +8939,208 @@ main .form .btnSearch:active {
   border-width: 2px;
   border-color: #3c7f72;
   color: #e4e4e4;
-}`, "",{"version":3,"sources":["webpack://./src/styles/_fonts.scss","webpack://./src/styles/main.scss","webpack://./src/styles/_utils.scss","webpack://./src/styles/_colors.scss","webpack://./src/styles/_header-nav.scss","webpack://./src/styles/_bg.scss","webpack://./src/styles/_content.scss"],"names":[],"mappings":"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","sourcesContent":["h1 {\r\n    font-size: 3rem;\r\n    font-weight: 100;\r\n}\r\n  \r\nh2 {\r\n    font-size: 2rem;\r\n    font-weight: 200;\r\n}\r\n  \r\nh3 {\r\n    font-size: 1.75rem;\r\n    font-style: italic;\r\n    font-weight: 200;\r\n}\r\n  \r\np {\r\n    font-size: 1.125rem;\r\n    margin-bottom: 0rem;\r\n}\r\n\r\n.antonio-sans-thin {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 100;\r\n    font-style: normal;\r\n  }\r\n\r\n.antonio-sans-extralight {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 200;\r\n    font-style: normal;\r\n  }\r\n\r\n.antonio-sans-light {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 300;\r\n    font-style: normal;\r\n  }\r\n\r\n  .antonio-sans-regular {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 400;\r\n    font-style: normal;\r\n  }\r\n\r\n  .antonio-sans-medium {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 500;\r\n    font-style: normal;\r\n  }\r\n\r\n  .antonio-sans-semibold {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 600;\r\n    font-style: normal;\r\n  }\r\n\r\n  .antonio-sans-bold {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 700;\r\n    font-style: normal;\r\n  }\r\n\r\n.ibm-plex-sans-thin {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 100;\r\n    font-style: normal;\r\n  }\r\n  \r\n.ibm-plex-sans-extralight {\r\n   font-family: \"IBM Plex Sans\", sans-serif;\r\n   font-weight: 200;\r\n   font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-light {\r\n   font-family: \"IBM Plex Sans\", sans-serif;\r\n   font-weight: 300;\r\n   font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-regular {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 400;\r\n    font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-medium {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 500;\r\n    font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-semibold {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 600;\r\n    font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-bold {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 700;\r\n    font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-thin-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 100;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-extralight-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 200;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-light-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 300;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-regular-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 400;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-medium-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 500;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-semibold-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 600;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-bold-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 700;\r\n    font-style: italic;\r\n}\r\n","h1 {\n  font-size: 3rem;\n  font-weight: 100;\n}\n\nh2 {\n  font-size: 2rem;\n  font-weight: 200;\n}\n\nh3 {\n  font-size: 1.75rem;\n  font-style: italic;\n  font-weight: 200;\n}\n\np {\n  font-size: 1.125rem;\n  margin-bottom: 0rem;\n}\n\n.antonio-sans-thin {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 100;\n  font-style: normal;\n}\n\n.antonio-sans-extralight {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 200;\n  font-style: normal;\n}\n\n.antonio-sans-light {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 300;\n  font-style: normal;\n}\n\n.antonio-sans-regular {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 400;\n  font-style: normal;\n}\n\n.antonio-sans-medium {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 500;\n  font-style: normal;\n}\n\n.antonio-sans-semibold {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 600;\n  font-style: normal;\n}\n\n.antonio-sans-bold {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 700;\n  font-style: normal;\n}\n\n.ibm-plex-sans-thin {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 100;\n  font-style: normal;\n}\n\n.ibm-plex-sans-extralight {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 200;\n  font-style: normal;\n}\n\n.ibm-plex-sans-light {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 300;\n  font-style: normal;\n}\n\n.ibm-plex-sans-regular {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 400;\n  font-style: normal;\n}\n\n.ibm-plex-sans-medium {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 500;\n  font-style: normal;\n}\n\n.ibm-plex-sans-semibold {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 600;\n  font-style: normal;\n}\n\n.ibm-plex-sans-bold {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 700;\n  font-style: normal;\n}\n\n.ibm-plex-sans-thin-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 100;\n  font-style: italic;\n}\n\n.ibm-plex-sans-extralight-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 200;\n  font-style: italic;\n}\n\n.ibm-plex-sans-light-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 300;\n  font-style: italic;\n}\n\n.ibm-plex-sans-regular-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 400;\n  font-style: italic;\n}\n\n.ibm-plex-sans-medium-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 500;\n  font-style: italic;\n}\n\n.ibm-plex-sans-semibold-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 600;\n  font-style: italic;\n}\n\n.ibm-plex-sans-bold-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 700;\n  font-style: italic;\n}\n\n.glass {\n  background: rgba(249, 249, 249, 0.5);\n  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);\n  backdrop-filter: blur(9.5px);\n  -webkit-backdrop-filter: blur(9.5px);\n}\n\n.error {\n  border-color: #992800;\n  font-style: italic;\n}\n\n.cardStyle {\n  align-items: center;\n  background: rgba(255, 252, 252, 0.8588235294);\n  border-radius: 15px;\n  box-shadow: 1px 3px rgba(0, 0, 0, 0.1);\n  color: #212121;\n  justify-content: space-between;\n  margin: 1rem 2rem;\n  padding: 0.5rem 1.5rem;\n  text-align: center;\n}\n.cardStyle .arrowButton {\n  border: none;\n  background: none;\n}\n.cardStyle .opened {\n  -webkit-transform: rotate(90deg);\n  -moz-transform: rotate(90deg);\n  -o-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n.cardStyle .detailsShown {\n  color: #212121;\n  text-align: justify;\n}\n\n#header {\n  display: flex;\n  justify-content: space-between;\n  position: fixed;\n  margin: auto;\n  padding: 2rem 1.5rem 1rem;\n  right: 0;\n  width: fit-content;\n  z-index: 10;\n}\n\n.headerOnSearch {\n  background-color: #fff4db;\n  padding-top: 1.5rem;\n}\n\n.searchImg {\n  width: 20px;\n  height: 20px;\n  border: 5px solid red;\n}\n\n.heading {\n  color: #543622;\n  text-decoration-line: underline;\n  text-align: center;\n  border: 3px solid #212121;\n  border-radius: 15px;\n  background-color: white;\n  border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;\n}\n\n.div-bg {\n  position: relative;\n}\n\n.div-bg::before {\n  content: \"\";\n  position: fixed;\n  left: -150px;\n  right: 0;\n  z-index: -1;\n  display: block;\n  background-image: url(\"../assets/bg-retro.png\");\n  background-size: cover;\n  height: 100%;\n}\n\nmain {\n  color: #e4e4e4;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100vh;\n  justify-content: center;\n  top: 15%;\n  overflow-y: auto;\n}\nmain .formDiv {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\nmain .outer {\n  border: 3px solid #e4e4e4;\n  border-radius: 15px;\n  padding: 1rem;\n  margin: 1rem;\n}\nmain .form {\n  color: #212121;\n  flex-direction: column;\n  justify-content: space-around;\n}\nmain .form .labelFont {\n  color: #212121;\n}\nmain .form .inputStyle {\n  border-width: 2px;\n  border-style: solid;\n  border-radius: 10px;\n}\nmain .form .btnSearch {\n  background: rgba(255, 193, 7, 0.8);\n  border: 2px solid rgba(255, 193, 7, 0.8);\n  box-shadow: 1px 3px rgba(0, 0, 0, 0.1);\n  margin: auto;\n  width: fit-content;\n}\nmain .form .btnSearch:hover {\n  background: rgb(254, 174, 0);\n  border-color: rgb(254, 174, 0);\n}\nmain .form .btnSearch:active {\n  background-color: #3c7f72;\n  border-width: 2px;\n  border-color: #3c7f72;\n  color: #e4e4e4;\n}","$headerHeightSmall: 9rem;\r\n\r\n.glass {\r\n    background: $whiteGlass;\r\n    box-shadow: 0 4px 30px $boxShadow;\r\n    backdrop-filter: blur(9.5px);\r\n    -webkit-backdrop-filter: blur(9.5px);\r\n}\r\n\r\n.error {\r\n    border-color: $errorColor;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n.cardStyle {\r\n    align-items: center;\r\n    background: #fffcfcdb;\r\n    border-radius: 15px;\r\n    box-shadow: 1px 3px $boxShadow;\r\n    color: $mildBlack;\r\n    justify-content: space-between;\r\n    margin: 1rem 2rem;\r\n    padding: 0.5rem 1.5rem;\r\n    text-align: center;\r\n\r\n    // .titleStyle {\r\n    //     color: $mildBlack;\r\n\r\n    // }\r\n    // .authorStyle {\r\n    //     color: $mildBlack;\r\n    // }\r\n\r\n    .arrowButton {\r\n        border: none;\r\n        background: none;\r\n    }\r\n\r\n    .opened {\r\n        -webkit-transform: rotate(90deg);\r\n        -moz-transform: rotate(90deg);\r\n        -o-transform: rotate(90deg);\r\n        -ms-transform: rotate(90deg);\r\n        transform: rotate(90deg);\r\n    }\r\n\r\n    .detailsShown {\r\n        color: $mildBlack;\r\n        text-align: justify;\r\n    }\r\n}\r\n\r\n","$powderWhite : #e4e4e4;\r\n$whiteGlass: rgb(249 249 249 / 50%);\r\n$glassBlack: rgba(39, 36, 36, 0.3);\r\n$boxShadow: rgba(0, 0, 0, 0.1);\r\n$mildBlack: #212121;\r\n$focus: rgb(166, 61, 87);\r\n$raspberry: rgb(159 98 137 / 70%);\r\n$errorColor: #992800;\r\n$retroYellow: #ffc107cc;\r\n$retroYellowHovered: rgba(254 174 0);\r\n$retroSage: rgb(163 194 187);\r\n$retroGreen: #3c7f72;\r\n$gray: #868686;\r\n$brown: #543622;\r\n$cotto: #d14924;\r\n$bgColor: #fff4db;","#header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position: fixed;\r\n    margin: auto;\r\n    padding: 2rem 1.5rem 1rem;\r\n    right: 0;\r\n    width: fit-content;\r\n    z-index: 10;\r\n}\r\n\r\n.headerOnSearch {\r\n    background-color: $bgColor;\r\n    padding-top: 1.5rem;\r\n}\r\n\r\n//classes for nav as it is appended\r\n.searchImg {\r\n    width: 20px;\r\n    height: 20px;\r\n    border: 5px solid red;\r\n}\r\n\r\n.heading {\r\n    color: $brown;\r\n    text-decoration-line: underline;\r\n    text-align: center;\r\n    border: 3px solid $mildBlack;\r\n    border-radius: 15px;\r\n    background-color: white;\r\n    border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;\r\n}\r\n","\r\n.div-bg {\r\n    // overflow: auto;\r\n    position: relative;\r\n}\r\n.div-bg::before {\r\n    content: \"\";\r\n    position: fixed;\r\n    // left: 0;\r\n    left: -150px;\r\n    right: 0;\r\n    z-index: -1;\r\n    display: block;\r\n    // background-image: url('../assets/bg-blurred.png');\r\n    // background-image: url('../assets/bg-pastel.png');\r\n    // background-image: url('../assets/bg_fade.png');\r\n    background-image: url('../assets/bg-retro.png');\r\n    background-size:cover;\r\n    // width: 100%;\r\n    height: 100%;\r\n}","main {\r\n    color: $powderWhite;\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n    height: 100vh;\r\n    justify-content: center;\r\n    top: 15%;\r\n    overflow-y: auto;\r\n    \r\n    .formDiv {\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n    }\r\n\r\n    //making the card for each news article\r\n    .outer {\r\n        border: 3px solid $powderWhite;\r\n        border-radius: 15px;\r\n        padding: 1rem;\r\n        margin: 1rem;\r\n    }\r\n\r\n    .form {\r\n        color: $mildBlack;\r\n        flex-direction: column;\r\n        justify-content: space-around;\r\n\r\n        .labelFont {\r\n            color: $mildBlack;\r\n        }\r\n\r\n        .inputStyle {\r\n            border-width: 2px;\r\n            border-style: solid;\r\n            border-radius: 10px;\r\n        }\r\n\r\n        .btnSearch {\r\n            background: $retroYellow;\r\n            border: 2px solid $retroYellow;\r\n            box-shadow: 1px 3px $boxShadow;\r\n            margin: auto;\r\n            width: fit-content;\r\n            &:hover {\r\n                background: $retroYellowHovered;\r\n                border-color: $retroYellowHovered;\r\n            }\r\n            &:active {\r\n                background-color: $retroGreen;\r\n                border-width: 2px;\r\n                border-color: $retroGreen;\r\n                color: $powderWhite;\r\n            }\r\n        }\r\n    }\r\n}"],"sourceRoot":""}]);
+}
+
+/* Small devices (mobile phones, 0 and up) */
+/* No media query since this is the default in Foundation */
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header.headerOnSearch {
+    padding: 0.6rem 2.5rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 2rem;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  #responseDiv {
+    margin-top: -2rem;
+  }
+  #responseDiv .outer {
+    margin: 4rem;
+  }
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) and (orientation: portrait) {
+  header h1 {
+    font-size: 4rem;
+  }
+  .formDiv {
+    top: 1rem;
+    font-size: 1.5rem;
+  }
+  #responseDiv {
+    line-height: 1.7rem;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+  header.headerOnSearch {
+    padding: 0.6rem 2.5rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 2rem;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  #responseDiv {
+    margin-top: -2rem;
+  }
+  #responseDiv .outer {
+    margin: 4rem;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  header h1 {
+    font-size: 3.5rem;
+    padding: 3rem;
+  }
+  header.headerOnSearch {
+    padding: 0.6rem 2.5rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 2.5rem;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  .formDiv .labelFont {
+    font-size: 1.3rem;
+  }
+  .formDiv .btnSearch {
+    font-size: 1.25rem;
+  }
+  .formDiv #category {
+    font-size: 1.2rem;
+  }
+  #responseDiv {
+    margin-top: -3rem;
+    line-height: 2rem;
+  }
+  #responseDiv .outer {
+    margin: 5% 20%;
+  }
+  #responseDiv h3 {
+    padding: 0.6rem;
+    font-size: 1.6rem;
+  }
+  #responseDiv p {
+    font-size: 1rem;
+  }
+  #responseDiv .detailsShown {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+}
+@media only screen and (min-width: 1201px) and (max-width: 1400px) {
+  header h1 {
+    font-size: 4rem;
+    padding: 4rem;
+  }
+  header.headerOnSearch {
+    padding: 2rem 6rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 3.5rem;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  .formDiv .labelFont {
+    font-size: 1.6rem;
+  }
+  .formDiv .btnSearch {
+    font-size: 1.4rem;
+  }
+  .formDiv #category {
+    font-size: 1.35rem;
+  }
+  .formDiv .outer {
+    padding: 3rem 2rem;
+  }
+  #responseDiv {
+    margin-top: -3rem;
+    line-height: 2rem;
+  }
+  #responseDiv .outer {
+    margin: 5% 20%;
+  }
+  #responseDiv .outer {
+    margin: 5% 20%;
+  }
+  #responseDiv h3 {
+    padding: 0.8rem;
+    font-size: 1.8rem;
+  }
+  #responseDiv p {
+    font-size: 1.3rem;
+  }
+  #responseDiv .detailsShown {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+}
+@media only screen and (min-width: 1401px) {
+  header h1 {
+    font-size: 3rem;
+    padding: 2rem 4rem;
+  }
+  header.headerOnSearch {
+    padding: 1rem 6rem;
+  }
+  header.headerOnSearch h1 {
+    font-size: 2rem;
+  }
+  header.headerOnSearch .searchInfo {
+    position: relative;
+    font-size: 1.5rem;
+    right: 0;
+    top: 0;
+  }
+  .formDiv {
+    position: relative;
+    top: 2rem;
+  }
+  .formDiv .labelFont {
+    font-size: 1.6rem;
+  }
+  .formDiv .btnSearch {
+    font-size: 1.4rem;
+  }
+  .formDiv #category {
+    font-size: 1.35rem;
+  }
+  .formDiv .outer {
+    padding: 3rem 2rem;
+  }
+  #responseDiv {
+    margin-top: -3rem;
+    line-height: 2rem;
+  }
+  #responseDiv .outer {
+    margin: 5% 20%;
+  }
+  #responseDiv h3 {
+    padding: 1rem;
+    font-size: 2rem;
+  }
+  #responseDiv p {
+    font-size: 1.5rem;
+  }
+  #responseDiv .detailsShown {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}`, "",{"version":3,"sources":["webpack://./src/styles/_fonts.scss","webpack://./src/styles/main.scss","webpack://./src/styles/_utils.scss","webpack://./src/styles/_colors.scss","webpack://./src/styles/_header-nav.scss","webpack://./src/styles/_bg.scss","webpack://./src/styles/_content.scss","webpack://./src/styles/_media-query.scss"],"names":[],"mappings":"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","sourcesContent":["h1 {\r\n    font-size: 3rem;\r\n    font-weight: 100;\r\n}\r\n  \r\nh2 {\r\n    font-size: 2rem;\r\n    font-weight: 200;\r\n}\r\n  \r\nh3 {\r\n    font-size: 1.75rem;\r\n    font-style: italic;\r\n    font-weight: 200;\r\n}\r\n  \r\np {\r\n    font-size: 1.125rem;\r\n    margin-bottom: 0rem;\r\n}\r\n\r\n.antonio-sans-thin {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 100;\r\n    font-style: normal;\r\n  }\r\n\r\n.antonio-sans-extralight {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 200;\r\n    font-style: normal;\r\n  }\r\n\r\n.antonio-sans-light {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 300;\r\n    font-style: normal;\r\n  }\r\n\r\n  .antonio-sans-regular {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 400;\r\n    font-style: normal;\r\n  }\r\n\r\n  .antonio-sans-medium {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 500;\r\n    font-style: normal;\r\n  }\r\n\r\n  .antonio-sans-semibold {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 600;\r\n    font-style: normal;\r\n  }\r\n\r\n  .antonio-sans-bold {\r\n    font-family: \"Antonio\", sans-serif;\r\n    font-weight: 700;\r\n    font-style: normal;\r\n  }\r\n\r\n.ibm-plex-sans-thin {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 100;\r\n    font-style: normal;\r\n  }\r\n  \r\n.ibm-plex-sans-extralight {\r\n   font-family: \"IBM Plex Sans\", sans-serif;\r\n   font-weight: 200;\r\n   font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-light {\r\n   font-family: \"IBM Plex Sans\", sans-serif;\r\n   font-weight: 300;\r\n   font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-regular {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 400;\r\n    font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-medium {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 500;\r\n    font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-semibold {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 600;\r\n    font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-bold {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 700;\r\n    font-style: normal;\r\n}\r\n  \r\n.ibm-plex-sans-thin-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 100;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-extralight-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 200;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-light-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 300;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-regular-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 400;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-medium-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 500;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-semibold-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 600;\r\n    font-style: italic;\r\n}\r\n  \r\n.ibm-plex-sans-bold-italic {\r\n    font-family: \"IBM Plex Sans\", sans-serif;\r\n    font-weight: 700;\r\n    font-style: italic;\r\n}\r\n","h1 {\n  font-size: 3rem;\n  font-weight: 100;\n}\n\nh2 {\n  font-size: 2rem;\n  font-weight: 200;\n}\n\nh3 {\n  font-size: 1.75rem;\n  font-style: italic;\n  font-weight: 200;\n}\n\np {\n  font-size: 1.125rem;\n  margin-bottom: 0rem;\n}\n\n.antonio-sans-thin {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 100;\n  font-style: normal;\n}\n\n.antonio-sans-extralight {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 200;\n  font-style: normal;\n}\n\n.antonio-sans-light {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 300;\n  font-style: normal;\n}\n\n.antonio-sans-regular {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 400;\n  font-style: normal;\n}\n\n.antonio-sans-medium {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 500;\n  font-style: normal;\n}\n\n.antonio-sans-semibold {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 600;\n  font-style: normal;\n}\n\n.antonio-sans-bold {\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 700;\n  font-style: normal;\n}\n\n.ibm-plex-sans-thin {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 100;\n  font-style: normal;\n}\n\n.ibm-plex-sans-extralight {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 200;\n  font-style: normal;\n}\n\n.ibm-plex-sans-light {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 300;\n  font-style: normal;\n}\n\n.ibm-plex-sans-regular {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 400;\n  font-style: normal;\n}\n\n.ibm-plex-sans-medium {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 500;\n  font-style: normal;\n}\n\n.ibm-plex-sans-semibold {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 600;\n  font-style: normal;\n}\n\n.ibm-plex-sans-bold {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 700;\n  font-style: normal;\n}\n\n.ibm-plex-sans-thin-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 100;\n  font-style: italic;\n}\n\n.ibm-plex-sans-extralight-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 200;\n  font-style: italic;\n}\n\n.ibm-plex-sans-light-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 300;\n  font-style: italic;\n}\n\n.ibm-plex-sans-regular-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 400;\n  font-style: italic;\n}\n\n.ibm-plex-sans-medium-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 500;\n  font-style: italic;\n}\n\n.ibm-plex-sans-semibold-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 600;\n  font-style: italic;\n}\n\n.ibm-plex-sans-bold-italic {\n  font-family: \"IBM Plex Sans\", sans-serif;\n  font-weight: 700;\n  font-style: italic;\n}\n\n.glass {\n  background: rgba(249, 249, 249, 0.5);\n  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);\n  backdrop-filter: blur(9.5px);\n  -webkit-backdrop-filter: blur(9.5px);\n}\n\n.error {\n  border-color: #992800;\n  font-style: italic;\n}\n\n.invisible {\n  visibility: collapse;\n}\n\n.cardStyle {\n  align-items: center;\n  background: rgba(255, 252, 252, 0.8588235294);\n  border-radius: 15px;\n  box-shadow: 1px 3px rgba(0, 0, 0, 0.1);\n  color: #212121;\n  justify-content: space-between;\n  margin: 1rem 2rem;\n  padding: 0.5rem 1.5rem;\n  text-align: center;\n}\n.cardStyle .arrowButton {\n  border: none;\n  background: none;\n}\n.cardStyle .opened {\n  -webkit-transform: rotate(90deg);\n  -moz-transform: rotate(90deg);\n  -o-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n.cardStyle .detailsShown {\n  color: #212121;\n  text-align: justify;\n  line-height: 1.7rem;\n}\n\n.headerStart {\n  display: flex;\n  justify-content: space-between;\n  position: fixed;\n  margin: auto;\n  padding: 2rem 1.5rem 1rem;\n  right: 0;\n  width: fit-content;\n  z-index: 10;\n}\n.headerStart h1 {\n  text-wrap: nowrap;\n  padding-right: 2rem;\n  padding-left: 2rem;\n}\n\n.headerOnSearch {\n  background-color: #fff4db;\n  padding: 1.5rem 1.2rem 0.5rem 1.5rem;\n  width: 100%;\n  flex-direction: row-reverse;\n  align-items: center;\n  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);\n}\n.headerOnSearch h1 {\n  padding-right: 1rem;\n  padding-left: 2.5rem;\n  border-left: 4px solid #212121;\n}\n.headerOnSearch .imgSearchStyle {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  left: 2rem;\n}\n.headerOnSearch .heading {\n  color: #543622;\n  text-decoration-line: underline;\n  text-align: center;\n  border: 3px solid #212121;\n  border-radius: 15px;\n  background-color: white;\n  border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;\n}\n.headerOnSearch #lensSearch {\n  margin-right: 1rem;\n  position: relative;\n  transition: opacity 0.3s ease;\n  opacity: 1;\n}\n.headerOnSearch .searchInfo {\n  position: relative;\n  font-family: \"Antonio\", sans-serif;\n  font-weight: 200;\n  font-size: 1rem;\n  bottom: 30px;\n  left: 30px;\n  text-align: center;\n  visibility: hidden;\n  opacity: 0;\n  transition: opacity 0.3s ease;\n}\n.headerOnSearch #lensSearch:hover + .searchInfo {\n  visibility: visible;\n  opacity: 1;\n}\n\n.div-bg {\n  position: relative;\n}\n\n.div-bg::before {\n  content: \"\";\n  position: fixed;\n  left: -150px;\n  right: 0;\n  z-index: -1;\n  display: block;\n  background-image: url(\"../assets/bg-retro.png\");\n  background-size: cover;\n  height: 100%;\n}\n\nmain {\n  color: #e4e4e4;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100vh;\n  justify-content: center;\n  top: 15%;\n  overflow-y: auto;\n}\nmain .formDiv {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\nmain .outer {\n  border: 3px solid #e4e4e4;\n  border-radius: 15px;\n  padding: 1.5rem;\n  margin: 1.5rem;\n}\nmain .form {\n  color: #212121;\n  flex-direction: column;\n  justify-content: space-around;\n}\nmain .form .labelFont {\n  color: #212121;\n}\nmain .form .inputStyle {\n  border-width: 2px;\n  border-style: solid;\n  border-radius: 10px;\n}\nmain .form .btnSearch {\n  background: rgba(255, 193, 7, 0.8);\n  border: 2px solid rgba(255, 193, 7, 0.8);\n  box-shadow: 1px 3px rgba(0, 0, 0, 0.1);\n  margin: auto;\n  width: fit-content;\n}\nmain .form .btnSearch:hover {\n  background: rgb(254, 174, 0);\n  border-color: rgb(254, 174, 0);\n}\nmain .form .btnSearch:active {\n  background-color: #3c7f72;\n  border-width: 2px;\n  border-color: #3c7f72;\n  color: #e4e4e4;\n}\n\n/* Small devices (mobile phones, 0 and up) */\n/* No media query since this is the default in Foundation */\n@media only screen and (min-width: 577px) and (max-width: 768px) {\n  header h1 {\n    font-size: 2rem;\n  }\n  header.headerOnSearch {\n    padding: 0.6rem 2.5rem;\n  }\n  header.headerOnSearch h1 {\n    font-size: 2rem;\n  }\n  .formDiv {\n    position: relative;\n    top: 2rem;\n  }\n  #responseDiv {\n    margin-top: -2rem;\n  }\n  #responseDiv .outer {\n    margin: 4rem;\n  }\n}\n@media only screen and (min-width: 577px) and (max-width: 768px) and (orientation: portrait) {\n  header h1 {\n    font-size: 4rem;\n  }\n  .formDiv {\n    top: 1rem;\n    font-size: 1.5rem;\n  }\n  #responseDiv {\n    line-height: 1.7rem;\n  }\n}\n@media only screen and (min-width: 769px) and (max-width: 992px) {\n  header h1 {\n    font-size: 2.5rem;\n  }\n  header.headerOnSearch {\n    padding: 0.6rem 2.5rem;\n  }\n  header.headerOnSearch h1 {\n    font-size: 2rem;\n  }\n  .formDiv {\n    position: relative;\n    top: 2rem;\n  }\n  #responseDiv {\n    margin-top: -2rem;\n  }\n  #responseDiv .outer {\n    margin: 4rem;\n  }\n}\n@media only screen and (min-width: 993px) and (max-width: 1200px) {\n  header h1 {\n    font-size: 3.5rem;\n    padding: 3rem;\n  }\n  header.headerOnSearch {\n    padding: 0.6rem 2.5rem;\n  }\n  header.headerOnSearch h1 {\n    font-size: 2.5rem;\n  }\n  .formDiv {\n    position: relative;\n    top: 2rem;\n  }\n  .formDiv .labelFont {\n    font-size: 1.3rem;\n  }\n  .formDiv .btnSearch {\n    font-size: 1.25rem;\n  }\n  .formDiv #category {\n    font-size: 1.2rem;\n  }\n  #responseDiv {\n    margin-top: -3rem;\n    line-height: 2rem;\n  }\n  #responseDiv .outer {\n    margin: 5% 20%;\n  }\n  #responseDiv h3 {\n    padding: 0.6rem;\n    font-size: 1.6rem;\n  }\n  #responseDiv p {\n    font-size: 1rem;\n  }\n  #responseDiv .detailsShown {\n    font-size: 0.8rem;\n    padding: 0.6rem;\n  }\n}\n@media only screen and (min-width: 1201px) and (max-width: 1400px) {\n  header h1 {\n    font-size: 4rem;\n    padding: 4rem;\n  }\n  header.headerOnSearch {\n    padding: 2rem 6rem;\n  }\n  header.headerOnSearch h1 {\n    font-size: 3.5rem;\n  }\n  .formDiv {\n    position: relative;\n    top: 2rem;\n  }\n  .formDiv .labelFont {\n    font-size: 1.6rem;\n  }\n  .formDiv .btnSearch {\n    font-size: 1.4rem;\n  }\n  .formDiv #category {\n    font-size: 1.35rem;\n  }\n  .formDiv .outer {\n    padding: 3rem 2rem;\n  }\n  #responseDiv {\n    margin-top: -3rem;\n    line-height: 2rem;\n  }\n  #responseDiv .outer {\n    margin: 5% 20%;\n  }\n  #responseDiv .outer {\n    margin: 5% 20%;\n  }\n  #responseDiv h3 {\n    padding: 0.8rem;\n    font-size: 1.8rem;\n  }\n  #responseDiv p {\n    font-size: 1.3rem;\n  }\n  #responseDiv .detailsShown {\n    font-size: 1rem;\n    padding: 0.6rem;\n  }\n}\n@media only screen and (min-width: 1401px) {\n  header h1 {\n    font-size: 3rem;\n    padding: 2rem 4rem;\n  }\n  header.headerOnSearch {\n    padding: 1rem 6rem;\n  }\n  header.headerOnSearch h1 {\n    font-size: 2rem;\n  }\n  header.headerOnSearch .searchInfo {\n    position: relative;\n    font-size: 1.5rem;\n    right: 0;\n    top: 0;\n  }\n  .formDiv {\n    position: relative;\n    top: 2rem;\n  }\n  .formDiv .labelFont {\n    font-size: 1.6rem;\n  }\n  .formDiv .btnSearch {\n    font-size: 1.4rem;\n  }\n  .formDiv #category {\n    font-size: 1.35rem;\n  }\n  .formDiv .outer {\n    padding: 3rem 2rem;\n  }\n  #responseDiv {\n    margin-top: -3rem;\n    line-height: 2rem;\n  }\n  #responseDiv .outer {\n    margin: 5% 20%;\n  }\n  #responseDiv h3 {\n    padding: 1rem;\n    font-size: 2rem;\n  }\n  #responseDiv p {\n    font-size: 1.5rem;\n  }\n  #responseDiv .detailsShown {\n    font-size: 1.2rem;\n    padding: 1rem;\n  }\n}","$headerHeightSmall: 9rem;\r\n\r\n.glass {\r\n    background: $whiteGlass;\r\n    box-shadow: 0 4px 30px $boxShadow;\r\n    backdrop-filter: blur(9.5px);\r\n    -webkit-backdrop-filter: blur(9.5px);\r\n}\r\n\r\n.error {\r\n    border-color: $errorColor;\r\n    font-style: italic;\r\n}\r\n\r\n.invisible {\r\n    visibility: collapse;\r\n}\r\n\r\n.cardStyle {\r\n    align-items: center;\r\n    background: #fffcfcdb;\r\n    border-radius: 15px;\r\n    box-shadow: 1px 3px $boxShadow;\r\n    color: $mildBlack;\r\n    justify-content: space-between;\r\n    margin: 1rem 2rem;\r\n    padding: 0.5rem 1.5rem;\r\n    text-align: center;\r\n\r\n    .arrowButton {\r\n        border: none;\r\n        background: none;\r\n    }\r\n\r\n    .opened {\r\n        -webkit-transform: rotate(90deg);\r\n        -moz-transform: rotate(90deg);\r\n        -o-transform: rotate(90deg);\r\n        -ms-transform: rotate(90deg);\r\n        transform: rotate(90deg);\r\n    }\r\n\r\n    .detailsShown {\r\n        color: $mildBlack;\r\n        text-align: justify;\r\n        line-height: 1.7rem;\r\n    }\r\n}\r\n\r\n","$powderWhite : #e4e4e4;\r\n$whiteGlass: rgb(249 249 249 / 50%);\r\n$glassBlack: rgba(39, 36, 36, 0.3);\r\n$boxShadow: rgba(0, 0, 0, 0.1);\r\n$mildBlack: #212121;\r\n$focus: rgb(166, 61, 87);\r\n$raspberry: rgb(159 98 137 / 70%);\r\n$errorColor: #992800;\r\n$retroYellow: #ffc107cc;\r\n$retroYellowHovered: rgba(254 174 0);\r\n$retroSage: rgb(163 194 187);\r\n$retroGreen: #3c7f72;\r\n$gray: #868686;\r\n$brown: #543622;\r\n$cotto: #d14924;\r\n$bgColor: #fff4db;",".headerStart {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position: fixed;\r\n    margin: auto;\r\n    padding: 2rem 1.5rem 1rem;\r\n    right: 0;\r\n    width: fit-content;\r\n    z-index: 10;\r\n    h1 {\r\n        text-wrap: nowrap;\r\n        padding-right: 2rem;\r\n        padding-left: 2rem;\r\n    }\r\n}\r\n\r\n//classes for when the search has been initated and nav has been appended\r\n\r\n.headerOnSearch {\r\n    background-color: $bgColor;\r\n    padding: 1.5rem 1.2rem 0.5rem 1.5rem;\r\n    width: 100%;\r\n    flex-direction: row-reverse;\r\n    align-items: center;\r\n    box-shadow: 0 4px 30px $boxShadow;\r\n    h1 {\r\n        padding-right: 1rem;\r\n        padding-left: 2.5rem;\r\n        border-left: 4px solid $mildBlack;\r\n    }\r\n    \r\n    .imgSearchStyle {\r\n        display: flex;\r\n        // flex-direction: column-reverse;\r\n        justify-content: center;\r\n        align-items: center;\r\n        position: relative;\r\n        left: 2rem;\r\n    }\r\n    \r\n    .heading {\r\n        color: $brown;\r\n        text-decoration-line: underline;\r\n        text-align: center;\r\n        border: 3px solid $mildBlack;\r\n        border-radius: 15px;\r\n        background-color: white;\r\n        border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;\r\n    }\r\n    \r\n    #lensSearch {\r\n        margin-right: 1rem;\r\n        position: relative;\r\n        transition: opacity 0.3s ease;\r\n        opacity: 1;\r\n    }\r\n    \r\n    .searchInfo {\r\n        position: relative;\r\n        font-family: 'Antonio', sans-serif;\r\n        font-weight: 200;\r\n        font-size: 1rem;\r\n        bottom: 30px;\r\n        left: 30px;\r\n        text-align: center;\r\n        visibility: hidden;\r\n        opacity: 0;\r\n        transition: opacity 0.3s ease;\r\n    }\r\n    \r\n    #lensSearch:hover + .searchInfo {\r\n        visibility: visible;\r\n        opacity: 1;\r\n    }\r\n}\r\n\r\n","\r\n.div-bg {\r\n    // overflow: auto;\r\n    position: relative;\r\n}\r\n.div-bg::before {\r\n    content: \"\";\r\n    position: fixed;\r\n    // left: 0;\r\n    left: -150px;\r\n    right: 0;\r\n    z-index: -1;\r\n    display: block;\r\n    // background-image: url('../assets/bg-blurred.png');\r\n    // background-image: url('../assets/bg-pastel.png');\r\n    // background-image: url('../assets/bg_fade.png');\r\n    background-image: url('../assets/bg-retro.png');\r\n    background-size:cover;\r\n    // width: 100%;\r\n    height: 100%;\r\n}","main {\r\n    color: $powderWhite;\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n    height: 100vh;\r\n    justify-content: center;\r\n    top: 15%;\r\n    overflow-y: auto;\r\n    \r\n    .formDiv {\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n    }\r\n\r\n    //making the card for each news article\r\n    .outer {\r\n        border: 3px solid $powderWhite;\r\n        border-radius: 15px;\r\n        padding: 1.5rem;\r\n        margin: 1.5rem;\r\n    }\r\n\r\n    .form {\r\n        color: $mildBlack;\r\n        flex-direction: column;\r\n        justify-content: space-around;\r\n\r\n        .labelFont {\r\n            color: $mildBlack;\r\n        }\r\n\r\n        .inputStyle {\r\n            border-width: 2px;\r\n            border-style: solid;\r\n            border-radius: 10px;\r\n        }\r\n\r\n        .btnSearch {\r\n            background: $retroYellow;\r\n            border: 2px solid $retroYellow;\r\n            box-shadow: 1px 3px $boxShadow;\r\n            margin: auto;\r\n            width: fit-content;\r\n            &:hover {\r\n                background: $retroYellowHovered;\r\n                border-color: $retroYellowHovered;\r\n            }\r\n            &:active {\r\n                background-color: $retroGreen;\r\n                border-width: 2px;\r\n                border-color: $retroGreen;\r\n                color: $powderWhite;\r\n            }\r\n        }\r\n    }\r\n}","/* Small devices (mobile phones, 0 and up) */\r\n/* No media query since this is the default in Foundation */\r\n\r\n\r\n@media only screen and (min-width: 577px) and (max-width: 768px) {\r\n    \r\n    header h1 {\r\n        font-size: 2rem;\r\n    }\r\n\r\n    header.headerOnSearch {\r\n        padding: 0.6rem 2.5rem;\r\n        h1 {\r\n            font-size: 2rem;\r\n        }\r\n    }\r\n\r\n    .formDiv {\r\n        position: relative;\r\n        top: 2rem;\r\n    }\r\n\r\n    #responseDiv {\r\n        margin-top: -2rem;\r\n        .outer {\r\n            margin: 4rem;\r\n        }\r\n    }\r\n\r\n    @media only screen and (orientation: portrait) {\r\n        header h1 {\r\n            font-size: 4rem;\r\n        }\r\n        .formDiv {\r\n            top: 1rem;\r\n            font-size: 1.5rem;\r\n        }\r\n        #responseDiv {\r\n            line-height: 1.7rem;\r\n        }\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 769px) and (max-width: 992px) {\r\n    header h1 {\r\n        font-size: 2.5rem;\r\n    }\r\n\r\n    header.headerOnSearch {\r\n        padding: 0.6rem 2.5rem;\r\n        h1 {\r\n            font-size: 2rem;\r\n        }\r\n    }\r\n\r\n    .formDiv {\r\n        position: relative;\r\n        top: 2rem;\r\n    }\r\n\r\n    #responseDiv {\r\n        margin-top: -2rem;\r\n        .outer {\r\n            margin: 4rem;\r\n        }\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 993px) and (max-width: 1200px) {\r\n    header h1 {\r\n        font-size: 3.5rem;\r\n        padding: 3rem;\r\n    }\r\n\r\n    header.headerOnSearch {\r\n        padding: 0.6rem 2.5rem;\r\n        h1 {\r\n            font-size: 2.5rem;\r\n        }\r\n    }\r\n\r\n    .formDiv {\r\n        position: relative;\r\n        top: 2rem;\r\n        .labelFont {\r\n            font-size: 1.3rem;\r\n        }\r\n        .btnSearch {\r\n            font-size: 1.25rem;\r\n        }\r\n        #category {\r\n            font-size: 1.2rem;\r\n        }\r\n    }\r\n\r\n    #responseDiv {\r\n        margin-top: -3rem;\r\n        line-height: 2rem;\r\n        .outer {\r\n            margin: 5% 20%;\r\n        }\r\n        h3 {\r\n            padding: 0.6rem;\r\n            font-size: 1.6rem;\r\n        }\r\n        p {\r\n            font-size: 1rem;\r\n        }\r\n        .detailsShown {\r\n            font-size: 0.8rem;\r\n            padding: 0.6rem;\r\n        }\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 1201px) and (max-width: 1400px) {\r\n    header h1 {\r\n        font-size: 4rem;\r\n        padding: 4rem;\r\n    }\r\n\r\n    header.headerOnSearch {\r\n        padding: 2rem 6rem;\r\n        h1 {\r\n            font-size: 3.5rem;\r\n        }\r\n    }\r\n\r\n    .formDiv {\r\n        position: relative;\r\n        top: 2rem;\r\n        .labelFont {\r\n            font-size: 1.6rem;\r\n        }\r\n        .btnSearch {\r\n            font-size: 1.4rem;\r\n        }\r\n        #category {\r\n            font-size: 1.35rem;\r\n        }\r\n        .outer {\r\n            padding: 3rem 2rem;\r\n        }\r\n    }\r\n\r\n    #responseDiv {\r\n        margin-top: -3rem;\r\n        line-height: 2rem;\r\n        .outer {\r\n            margin: 5% 20%;\r\n        }\r\n        .outer {\r\n            margin: 5% 20%;\r\n        }\r\n        h3 {\r\n            padding: 0.8rem;\r\n            font-size:1.8rem;\r\n        }\r\n        p {\r\n            font-size: 1.3rem;\r\n        }\r\n        .detailsShown {\r\n            font-size: 1rem;\r\n            padding: 0.6rem;\r\n        }\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 1401px) {\r\n    header h1 {\r\n        font-size: 3rem;\r\n        padding: 2rem 4rem;\r\n    }\r\n\r\n    header.headerOnSearch {\r\n        padding: 1rem 6rem;\r\n        h1 {\r\n            font-size: 2rem;\r\n        }\r\n        .searchInfo {\r\n            position: relative;\r\n            font-size: 1.5rem;\r\n            right: 0;\r\n            top: 0;\r\n        }\r\n    }\r\n\r\n\r\n    .formDiv {\r\n        position: relative;\r\n        top: 2rem;\r\n        .labelFont {\r\n            font-size: 1.6rem;\r\n        }\r\n        .btnSearch {\r\n            font-size: 1.4rem;\r\n        }\r\n        #category {\r\n            font-size: 1.35rem;\r\n        }\r\n        .outer {\r\n            padding: 3rem 2rem;\r\n        }\r\n    }\r\n\r\n    #responseDiv {\r\n        margin-top: -3rem;\r\n        line-height: 2rem;\r\n        .outer {\r\n            margin: 5% 20%;\r\n        }\r\n        h3 {\r\n            padding: 1rem;\r\n            font-size: 2rem;\r\n        }\r\n        p {\r\n            font-size: 1.5rem;\r\n        }\r\n        .detailsShown {\r\n            font-size: 1.2rem;\r\n            padding: 1rem;\r\n        }\r\n    }\r\n\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34210,4 +34531,4 @@ generateJoke();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle477742a4056bef561277.js.map
+//# sourceMappingURL=bundle2194dabb30a9cc2df330.js.map
