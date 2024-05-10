@@ -29,4 +29,5 @@ function settingAttributeAndClass(elem, attributeType, attributeDesc, className)
 }
 
 
+
 export default addNavBar;

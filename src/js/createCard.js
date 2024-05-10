@@ -36,6 +36,8 @@ function createCard(description, mainAuth, mainName, mainUrl){
         bookUrlKey.classList.add('btn', 'arrowButton');
 
         responseDiv.style.position = 'absolute';
+        responseDiv.style.left = '0';
+        responseDiv.style.right = '0';
     }
 }
 

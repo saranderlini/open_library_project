@@ -17,7 +17,6 @@ function getSubject(key){
             alert(`The search for ${key} has not produced any result.`);
             document.getElementById('category').value = '';
         } else {
-
             for(let i = 0; i < works.length; i++){
                 caption = works[i].title;
             bookEndPoint = 'https://openlibrary.org' + works[i].key;

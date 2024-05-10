@@ -1,6 +1,6 @@
 function searchReset(){
     document.getElementById('header').addEventListener('click', (event) => {
-        if (event.target.id === 'navBar' || event.target.id === 'searchInfo') {
+        if (event.target.id === 'navBar' || event.target.id == 'lensSearch') {
             document.getElementById('header').classList.remove('headerOnSearch');
             document.getElementById('responseDiv').innerHTML = '';
             document.querySelector('div.formDiv').classList.remove('invisible');
@@ -8,6 +8,10 @@ function searchReset(){
             category.value = '';
             // Remove the navBar and searchInfo elements
             event.target.remove();
+        }
+
+        if(document.getElementById('lensSearch') == null && document.getElementById('searchInfo')) {
+            document.getElementById('navBar').remove(document.getElementById('searchInfo'));
         }
     });
 }
