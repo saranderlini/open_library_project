@@ -1,0 +1,56 @@
+$headerHeightSmall: 9rem;
+
+.glass {
+    background: $whiteGlass;
+    box-shadow: 0 4px 30px $boxShadow;
+    backdrop-filter: blur(9.5px);
+    -webkit-backdrop-filter: blur(9.5px);
+}
+
+.error {
+    border-color: $errorColor;
+    font-style: italic;
+}
+
+.invisible {
+    visibility: collapse;
+}
+
+.cardStyle {
+    align-items: center;
+    background: #fffcfcdb;
+    border-radius: 15px;
+    box-shadow: 1px 3px $boxShadow;
+    color: $mildBlack;
+    justify-content: space-between;
+    margin: 1rem 2rem;
+    padding: 0.5rem 1.5rem;
+    text-align: center;
+
+    // .titleStyle {
+    //     color: $mildBlack;
+
+    // }
+    // .authorStyle {
+    //     color: $mildBlack;
+    // }
+
+    .arrowButton {
+        border: none;
+        background: none;
+    }
+
+    .opened {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    .detailsShown {
+        color: $mildBlack;
+        text-align: justify;
+    }
+}
+

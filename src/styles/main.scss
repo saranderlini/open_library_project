@@ -1,8 +1,6 @@
-.btn {
-    padding: 1rem;
-    columns: purple;
-}
-
-h1 {
-    color: blue;
-}
+@import 'colors';
+@import 'fonts';
+@import 'utils';
+@import 'header-nav';
+@import 'bg';
+@import 'content';

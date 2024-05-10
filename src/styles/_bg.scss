@@ -1,0 +1,21 @@
+
+.div-bg {
+    // overflow: auto;
+    position: relative;
+}
+.div-bg::before {
+    content: "";
+    position: fixed;
+    // left: 0;
+    left: -150px;
+    right: 0;
+    z-index: -1;
+    display: block;
+    // background-image: url('../assets/bg-blurred.png');
+    // background-image: url('../assets/bg-pastel.png');
+    // background-image: url('../assets/bg_fade.png');
+    background-image: url('../assets/bg-retro.png');
+    background-size:cover;
+    // width: 100%;
+    height: 100%;
+}

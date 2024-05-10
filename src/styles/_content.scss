@@ -1,0 +1,59 @@
+main {
+    color: $powderWhite;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    top: 15%;
+    overflow-y: auto;
+    
+    .formDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    //making the card for each news article
+    .outer {
+        border: 3px solid $powderWhite;
+        border-radius: 15px;
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .form {
+        color: $mildBlack;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .labelFont {
+            color: $mildBlack;
+        }
+
+        .inputStyle {
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 10px;
+        }
+
+        .btnSearch {
+            background: $retroYellow;
+            border: 2px solid $retroYellow;
+            box-shadow: 1px 3px $boxShadow;
+            margin: auto;
+            width: fit-content;
+            &:hover {
+                background: $retroYellowHovered;
+                border-color: $retroYellowHovered;
+            }
+            &:active {
+                background-color: $retroGreen;
+                border-width: 2px;
+                border-color: $retroGreen;
+                color: $powderWhite;
+            }
+        }
+    }
+}

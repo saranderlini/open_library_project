@@ -3,18 +3,29 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { title } = require('process');
 const historyApiFallback = require('connect-history-api-fallback');
 const loader = require('sass-loader');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 
 module.exports = {
     mode: 'development',
+    target: 'web', 
     entry: {
-        bundle: path.resolve(__dirname, 'src/index.js'),
+        bundle: path.resolve(__dirname, 'src/js/index.js'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name][contenthash].js',
         clean: true,
         assetModuleFilename: '[name][ext]',
+    },
+    resolve: {
+
+        /* polyfills used to be included, now they must be manually added. however, they will error out if not added */
+        /* thus the :false fallbacks */
+        fallback: { 
+            "path": false,
+            "crypto": false,
+        }
     },
     //maps
     devtool: 'source-map',
@@ -53,15 +64,35 @@ module.exports = {
             {
                 test: /\.(svg|png|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
-            }
+                // loader: 'file-loader',
+                // options: {
+                //     name: '[path][name].[ext]',
+                // },
+            },
+            {
+                test: /\.html$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                    }
+                },
+                exclude: path.resolve(__dirname, 'src/template.html')
+            },
         ]
     },
     //plugin
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Webpack App',
+            title: 'Open Library',
             filename: 'index.html',
             template: 'src/template.html',
         }),
+        // new HtmlWebpackPlugin({
+        //     title: 'Open Library',
+        //     filename: 'templateTwo.html',
+        //     template: 'src/templateTwo.html',
+        //     chunks: [],
+        // }),
     ],
 }
