@@ -1,0 +1,225 @@
+/* Small devices (mobile phones, 0 and up) */
+/* No media query since this is the default in Foundation */
+
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header.headerOnSearch {
+        padding: 0.6rem 2.5rem;
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
+    .formDiv {
+        position: relative;
+        top: 2rem;
+    }
+
+    #responseDiv {
+        margin-top: -2rem;
+        .outer {
+            margin: 4rem;
+        }
+    }
+
+    @media only screen and (orientation: portrait) {
+        header h1 {
+            font-size: 4rem;
+        }
+        .formDiv {
+            top: 1rem;
+            font-size: 1.5rem;
+        }
+        #responseDiv {
+            line-height: 1.7rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header.headerOnSearch {
+        padding: 0.6rem 2.5rem;
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
+    .formDiv {
+        position: relative;
+        top: 2rem;
+    }
+
+    #responseDiv {
+        margin-top: -2rem;
+        .outer {
+            margin: 4rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+    header h1 {
+        font-size: 3.5rem;
+        padding: 3rem;
+    }
+
+    header.headerOnSearch {
+        padding: 0.6rem 2.5rem;
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
+
+    .formDiv {
+        position: relative;
+        top: 2rem;
+        .labelFont {
+            font-size: 1.3rem;
+        }
+        .btnSearch {
+            font-size: 1.25rem;
+        }
+        #category {
+            font-size: 1.2rem;
+        }
+    }
+
+    #responseDiv {
+        margin-top: -3rem;
+        line-height: 2rem;
+        .outer {
+            margin: 5% 20%;
+        }
+        h3 {
+            padding: 0.6rem;
+            font-size: 1.6rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+        .detailsShown {
+            font-size: 0.8rem;
+            padding: 0.6rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1400px) {
+    header h1 {
+        font-size: 4rem;
+        padding: 4rem;
+    }
+
+    header.headerOnSearch {
+        padding: 2rem 6rem;
+        h1 {
+            font-size: 3.5rem;
+        }
+    }
+
+    .formDiv {
+        position: relative;
+        top: 2rem;
+        .labelFont {
+            font-size: 1.6rem;
+        }
+        .btnSearch {
+            font-size: 1.4rem;
+        }
+        #category {
+            font-size: 1.35rem;
+        }
+        .outer {
+            padding: 3rem 2rem;
+        }
+    }
+
+    #responseDiv {
+        margin-top: -3rem;
+        line-height: 2rem;
+        .outer {
+            margin: 5% 20%;
+        }
+        .outer {
+            margin: 5% 20%;
+        }
+        h3 {
+            padding: 0.8rem;
+            font-size:1.8rem;
+        }
+        p {
+            font-size: 1.3rem;
+        }
+        .detailsShown {
+            font-size: 1rem;
+            padding: 0.6rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 1401px) {
+    header h1 {
+        font-size: 3rem;
+        padding: 2rem 4rem;
+    }
+
+    header.headerOnSearch {
+        padding: 1rem 6rem;
+        h1 {
+            font-size: 2rem;
+        }
+        .searchInfo {
+            position: relative;
+            font-size: 1.5rem;
+            right: 0;
+            top: 0;
+        }
+    }
+
+
+    .formDiv {
+        position: relative;
+        top: 2rem;
+        .labelFont {
+            font-size: 1.6rem;
+        }
+        .btnSearch {
+            font-size: 1.4rem;
+        }
+        #category {
+            font-size: 1.35rem;
+        }
+        .outer {
+            padding: 3rem 2rem;
+        }
+    }
+
+    #responseDiv {
+        margin-top: -3rem;
+        line-height: 2rem;
+        .outer {
+            margin: 5% 20%;
+        }
+        h3 {
+            padding: 1rem;
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+        .detailsShown {
+            font-size: 1.2rem;
+            padding: 1rem;
+        }
+    }
+
+}

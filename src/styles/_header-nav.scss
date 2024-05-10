@@ -29,18 +29,13 @@
         border-left: 4px solid $mildBlack;
     }
     
-    .navBar{
+    .imgSearchStyle {
         display: flex;
-        flex-direction: column-reverse;
+        // flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
-    }
-    
-    .imgSearchStyle {
-        margin-right: 1rem;
         position: relative;
-        transition: opacity 0.3s ease;
-        opacity: 1; 
+        left: 2rem;
     }
     
     .heading {
@@ -53,16 +48,6 @@
         border-image: repeating-linear-gradient(125deg, #3b7e71 0 10px, #ffaf00 0 20px, #d14924 0 30px) 3;
     }
     
-    .searchInfo {
-        position: relative;
-        font-size: 1rem;
-        left:30px;
-        text-align: center;
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
     #lensSearch {
         margin-right: 1rem;
         position: relative;
@@ -70,9 +55,17 @@
         opacity: 1;
     }
     
-    
-    #lensSearch:hover {
+    .searchInfo {
+        position: relative;
+        font-family: 'Antonio', sans-serif;
+        font-weight: 200;
+        font-size: 1rem;
+        bottom: 30px;
+        left: 30px;
+        text-align: center;
+        visibility: hidden;
         opacity: 0;
+        transition: opacity 0.3s ease;
     }
     
     #lensSearch:hover + .searchInfo {
