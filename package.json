@@ -2,10 +2,12 @@
   "name": "webpack_starter",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "http://USERNAME.github.io/REPONAME",
   "scripts": {
     "dev": "webpack",
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "keywords": [],
@@ -33,5 +35,9 @@
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
     "node-polyfill-webpack-plugin": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/USERNAME/REPONAME.git"   
   }
 }
