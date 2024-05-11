@@ -1,5 +1,4 @@
 // import bgPic from '../assets/bg-blurred.png';
-import searchImg from '../assets/search.png';
 import '../styles/main.scss';
 import setTop from './setTopToMain';
 import generateJoke from "./generateJoke";

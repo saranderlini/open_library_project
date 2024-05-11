@@ -19,7 +19,7 @@ module.exports = {
         assetModuleFilename: '[name][ext]',
     },
     resolve: {
-
+        extensions: ['.js', '.jsx', '.scss'],
         /* polyfills used to be included, now they must be manually added. however, they will error out if not added */
         /* thus the :false fallbacks */
         fallback: { 

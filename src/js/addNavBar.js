@@ -1,6 +1,6 @@
 import { name } from "file-loader";
 import { param } from "jquery";
-import magnifyingGlassImg from '../assets/search.png';
+import magnifyingGlassImg from '../img/magnifyingglass.png';
 import searchReset from "./searchReset";
 
 let header = document.getElementById('header');

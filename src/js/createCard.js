@@ -1,5 +1,5 @@
 import { event } from 'jquery';
-import arrowImg from '../assets/arrow-right.png';
+import arrowImg from '../img/arrow-right.png';
 
 //function for creation of card, then called inside the loop, for reading data gathered by Axios fetch
 function createCard(description, mainAuth, mainName, mainUrl){
