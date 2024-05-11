@@ -4,6 +4,8 @@ const { title } = require('process');
 const historyApiFallback = require('connect-history-api-fallback');
 const loader = require('sass-loader');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 
 module.exports = {
@@ -64,10 +66,6 @@ module.exports = {
             {
                 test: /\.(svg|png|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
-                // loader: 'file-loader',
-                // options: {
-                //     name: '[path][name].[ext]',
-                // },
             },
             {
                 test: /\.html$/,
@@ -88,11 +86,17 @@ module.exports = {
             filename: 'index.html',
             template: 'src/template.html',
         }),
-        // new HtmlWebpackPlugin({
-        //     title: 'Open Library',
-        //     filename: 'templateTwo.html',
-        //     template: 'src/templateTwo.html',
-        //     chunks: [],
-        // }),
+        new FaviconsWebpackPlugin({
+            logo: './src/img/favicon.png'
+        }),
+        new Dotenv({
+            path: './some.other.env', // load this now instead of the ones in '.env'
+            safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+            allowEmptyValues: true, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
+            systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+            silent: true, // hide any errors
+            defaults: false, // load '.env.defaults' as the default values if empty.
+            prefix: 'import.meta.env.' // reference your env variables as 'import.meta.env.ENV_VAR'.
+        })
     ],
 }

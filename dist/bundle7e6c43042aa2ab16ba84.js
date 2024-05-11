@@ -7346,33 +7346,6 @@ function createCard(description, mainAuth, mainName, mainUrl) {
 
 /***/ }),
 
-/***/ "./src/js/generateJoke.js":
-/*!********************************!*\
-  !*** ./src/js/generateJoke.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-
-function generateJoke() {
-  var config = {
-    headers: {
-      Accept: 'application/json'
-    }
-  };
-  axios__WEBPACK_IMPORTED_MODULE_0__["default"].get('https://icanhazdadjoke.com', config).then(function (res) {
-    document.getElementById('jokeBtn').innerHTML = res.data.joke;
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (generateJoke);
-
-/***/ }),
-
 /***/ "./src/js/lookUpCategory.js":
 /*!**********************************!*\
   !*** ./src/js/lookUpCategory.js ***!
@@ -30129,6 +30102,17 @@ module.exports = __webpack_require__.p + "bg-retro.png";
 
 /***/ }),
 
+/***/ "./src/img/favicon.png":
+/*!*****************************!*\
+  !*** ./src/img/favicon.png ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "favicon.png";
+
+/***/ }),
+
 /***/ "./src/img/magnifyingglass.png":
 /*!*************************************!*\
   !*** ./src/img/magnifyingglass.png ***!
@@ -34505,11 +34489,10 @@ var __webpack_exports__ = {};
   \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/main.scss */ "./src/styles/main.scss");
-/* harmony import */ var _setTopToMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setTopToMain */ "./src/js/setTopToMain.js");
-/* harmony import */ var _generateJoke__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./generateJoke */ "./src/js/generateJoke.js");
+/* harmony import */ var _img_favicon_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/favicon.png */ "./src/img/favicon.png");
+/* harmony import */ var _setTopToMain__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./setTopToMain */ "./src/js/setTopToMain.js");
 /* harmony import */ var _lookUpCategory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lookUpCategory */ "./src/js/lookUpCategory.js");
 /* harmony import */ var _showResult__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./showResult */ "./src/js/showResult.js");
-// import bgPic from '../assets/bg-blurred.png';
 
 
 
@@ -34518,18 +34501,8 @@ __webpack_require__.r(__webpack_exports__);
 if (true) {
   console.log('Looks like we are in development mode!');
 }
-
-// setTop();
-// getCategory();
-
-/**
-const jokeBtn = document.getElementById('jokeBtn');
-jokeBtn.addEventListener('click', generateJoke);
-
-generateJoke();
-*/
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle0bea9b7ce7e725b88131.js.map
+//# sourceMappingURL=bundle7e6c43042aa2ab16ba84.js.map
