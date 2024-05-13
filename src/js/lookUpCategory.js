@@ -7,7 +7,6 @@ let category = form.category;
 let cercaBtn = document.getElementById('cercaBtn');
 
 getCategory();
-checkInputValue(category);
 
 
 //allows for search to be initiated by pressing enter 
@@ -18,16 +17,23 @@ category.addEventListener('keypress', (e) => {
     }
 })
 
+//allows for search to be initiated by pressing enter 
+cercaBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    cercaBtn.click();
+})
+
 //gets corresponding books for the inserted category, upon checking thaht the field is not vacant
 function getCategory(){
     cercaBtn.addEventListener('click', (e) => {
     backOnFocus(category);
-    if(category.value == '' || category.value == undefined) {
+    if(category.value.toLowerCase().trim() == '' || category.value.toLowerCase().trim() == undefined) {
         e.preventDefault();
+        category.value = '';
         category.classList.add('error');
         category.setAttribute('placeholder', 'Please, specify a genre.');
     } else {
-        getSubject(category.value);
+        getSubject(category.value.toLowerCase().trim());
     }
    })
 }
@@ -38,19 +44,6 @@ function backOnFocus(field){
     if(field.classList.contains('error')){
         field.classList.remove('error');
     }
-}
-
-//function to check whether after error being displayed, the input field has been filled
-function checkInputValue(input) {
-    input.addEventListener('blur', ()=>{
-        if(input.value == '' || input.value == undefined){
-            input.classList.add('error');
-            category.setAttribute('placeholder', 'Please, specify a genre.');
-        } else if(input.classList.contains('error') && input.value != '' && input.value != undefined) {
-            category.setAttribute('placeholder', '');
-            input.classList.remove('error');
-        }
-    });
 }
     
 export default getCategory;

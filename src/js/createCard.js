@@ -3,7 +3,6 @@ import arrowImg from '../img/arrow-right.png';
 
 //function for creation of card, then called inside the loop, for reading data gathered by Axios fetch
 function createCard(description, mainAuth, mainName, mainUrl){
-    // let responseDiv = document.getElementById('responseDiv');
     let bookCard = document.createElement('div');
     bookCard.setAttribute('name', 'card');
     
@@ -17,15 +16,16 @@ function createCard(description, mainAuth, mainName, mainUrl){
     bookCard.classList.add('glass', 'outer', 'cardStyle');
     bookCard.setAttribute('id', description);
 
-    styleCard(mainAuth, 'ibm-plex-sans-medium-italic', mainName, 'antonio-sans-semibold', mainUrl);
-    
-    //append elements
+    styleCard(mainAuth, 'ibm-plex-sans-medium-italic', mainName, 'antonio-sans-semibold', mainUrl, document.getElementById('responseDiv'));
+    console.log();
+
     document.getElementById('responseDiv').appendChild(bookCard);
     bookCard.appendChild(firstLine).append(firstSec, bookUrlKey);
     firstSec.append(mainBookTitle, mainBookAuth);
     
+
     //Function to style and add innerHTML to card elements
-    function styleCard(bookAuth, authStl, bookTitle, ttlStl/*, newPage*/){
+    function styleCard(bookAuth, authStl, bookTitle, ttlStl, mainUrl, parentDiv){
         mainBookAuth.innerHTML = bookAuth;
         mainBookAuth.classList.add(authStl);
         mainBookTitle.innerHTML = bookTitle;
@@ -35,9 +35,9 @@ function createCard(description, mainAuth, mainName, mainUrl){
         bookUrlKey.innerHTML = '<img src="' + arrowImg + '" height="20px" width="20px">';
         bookUrlKey.classList.add('btn', 'arrowButton');
 
-        responseDiv.style.position = 'absolute';
-        responseDiv.style.left = '0';
-        responseDiv.style.right = '0';
+        parentDiv.style.position = 'absolute';
+        parentDiv.style.left = '0';
+        parentDiv.style.right = '0';
     }
 }
 

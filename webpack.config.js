@@ -87,7 +87,7 @@ module.exports = {
             template: 'src/template.html',
         }),
         new FaviconsWebpackPlugin({
-            logo: './src/img/favicon.png'
+            logo: './src/img/favicon.png', 
         }),
         new Dotenv({
             path: './some.other.env', // load this now instead of the ones in '.env'

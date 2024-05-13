@@ -5,7 +5,7 @@
     }
 
     header.headerOnSearch {
-        padding: 0.6rem 2.5rem;
+        padding: 1.5rem 2.5rem;
         h1 {
             font-size: 2rem;
         }
@@ -18,6 +18,7 @@
 
     #responseDiv {
         margin-top: -2rem;
+        
         .outer {
             margin: 4rem;
         }
@@ -43,11 +44,12 @@
     }
 
     header.headerOnSearch {
-        padding: 0.6rem 2.5rem;
+        padding: 1rem 2.5rem;
         h1 {
             font-size: 2rem;
         }
     }
+
 
     .formDiv {
         position: relative;
@@ -55,7 +57,7 @@
     }
 
     #responseDiv {
-        margin-top: -2rem;
+        // margin-top: -2rem;
         .outer {
             margin: 4rem;
         }
@@ -64,14 +66,14 @@
 
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
     header h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
         padding: 3rem;
     }
 
     header.headerOnSearch {
-        padding: 0.6rem 2.5rem;
+        padding: 1rem 2.5rem;
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
         }
     }
 
@@ -90,7 +92,7 @@
     }
 
     #responseDiv {
-        margin-top: -3rem;
+        // margin-top: -3rem;
         line-height: 2rem;
         .outer {
             margin: 5% 20%;
@@ -111,15 +113,19 @@
 
 @media only screen and (min-width: 1201px) and (max-width: 1400px) {
     header h1 {
-        font-size: 4rem;
-        padding: 4rem;
+        font-size: 2rem;
+        padding: 1.5rem;
     }
 
     header.headerOnSearch {
-        padding: 2rem 6rem;
+        padding: 1rem 6rem;
         h1 {
             font-size: 3.5rem;
         }
+    }
+
+    .label {
+        margin-top: 0.5rem;
     }
 
     .formDiv {
@@ -140,7 +146,7 @@
     }
 
     #responseDiv {
-        margin-top: -3rem;
+        // margin-top: -3rem;
         line-height: 2rem;
         .outer {
             margin: 5% 20%;
@@ -164,7 +170,7 @@
 
 @media only screen and (min-width: 1401px) {
     header h1 {
-        font-size: 3rem;
+        font-size: 2rem;
         padding: 2rem 4rem;
     }
 
@@ -200,7 +206,7 @@
     }
 
     #responseDiv {
-        margin-top: -3rem;
+        // margin-top: -3rem;
         line-height: 2rem;
         .outer {
             margin: 5% 20%;
