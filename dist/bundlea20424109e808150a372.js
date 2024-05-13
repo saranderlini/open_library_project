@@ -7309,7 +7309,7 @@ __webpack_require__.r(__webpack_exports__);
 
 //function for creation of card, then called inside the loop, for reading data gathered by Axios fetch
 function createCard(description, mainAuth, mainName, mainUrl) {
-  // let responseDiv = document.getElementById('responseDiv');
+  var cardSeparator = document.createElement('div');
   var bookCard = document.createElement('div');
   bookCard.setAttribute('name', 'card');
 
@@ -7366,8 +7366,9 @@ __webpack_require__.r(__webpack_exports__);
 var form = document.forms[0];
 var category = form.category;
 var cercaBtn = document.getElementById('cercaBtn');
+
+// checkInputValue(category.value.trim());
 getCategory();
-checkInputValue(category);
 
 //allows for search to be initiated by pressing enter 
 category.addEventListener('keypress', function (e) {
@@ -7377,16 +7378,23 @@ category.addEventListener('keypress', function (e) {
   }
 });
 
+//allows for search to be initiated by pressing enter 
+cercaBtn.addEventListener('touchstart', function (e) {
+  e.preventDefault();
+  cercaBtn.click();
+});
+
 //gets corresponding books for the inserted category, upon checking thaht the field is not vacant
 function getCategory() {
   cercaBtn.addEventListener('click', function (e) {
     backOnFocus(category);
-    if (category.value == '' || category.value == undefined) {
+    if (category.value.toLowerCase().trim() == '' || category.value.toLowerCase().trim() == undefined) {
       e.preventDefault();
+      category.value = '';
       category.classList.add('error');
       category.setAttribute('placeholder', 'Please, specify a genre.');
     } else {
-      (0,_processResponse__WEBPACK_IMPORTED_MODULE_1__["default"])(category.value);
+      (0,_processResponse__WEBPACK_IMPORTED_MODULE_1__["default"])(category.value.toLowerCase().trim());
     }
   });
 }
@@ -7397,19 +7405,6 @@ function backOnFocus(field) {
   if (field.classList.contains('error')) {
     field.classList.remove('error');
   }
-}
-
-//function to check whether after error being displayed, the input field has been filled
-function checkInputValue(input) {
-  input.addEventListener('blur', function () {
-    if (input.value == '' || input.value == undefined) {
-      input.classList.add('error');
-      category.setAttribute('placeholder', 'Please, specify a genre.');
-    } else if (input.classList.contains('error') && input.value != '' && input.value != undefined) {
-      category.setAttribute('placeholder', '');
-      input.classList.remove('error');
-    }
-  });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getCategory);
 
@@ -7446,7 +7441,6 @@ function getSubject(key) {
     var caption = '';
     var writers = '';
     var bookEndPoint = '';
-    console.log(works);
     if (works.length == 0) {
       alert("The search for ".concat(key, " has not produced any result."));
       document.getElementById('category').value = '';
@@ -7454,7 +7448,6 @@ function getSubject(key) {
       for (var i = 0; i < works.length; i++) {
         caption = works[i].title;
         bookEndPoint = 'https://openlibrary.org' + works[i].key;
-        console.log(bookEndPoint);
         if (works[i].authors.length > 1) {
           for (var j = 1; j < works[i].authors.length; j++) {
             writers += works[i].authors[j].name + ', ';
@@ -7472,6 +7465,7 @@ function getSubject(key) {
     }
   })["catch"](function (error) {
     console.error('Error fetching subject data:', error);
+    document.getElementById('category').setAttribute('placeholder', 'Please, provide a different term.');
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getSubject);
@@ -7542,44 +7536,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/*
-import axios from "axios";
-
-let bookDescription = '';
-let detailsDev = '';
-
-function showResult(){
-    let arrowButton = document.querySelectorAll('button.arrowButton');
-    arrowButton.forEach(item => {
-        item.addEventListener('click', () => {
-            if(item.parentElement.lastChild.classList.contains('detailsShown')) {
-                item.classList.remove('opened');
-                detailsDev.classList.remove('detailsShown', 'ibm-plex-sans-regular');
-                item.parentElement.removeChild(detailsDev);
-            } else {
-                axios.get(item.name)
-                .then(resp => {
-                    let data = resp.data;
-                    if(data.description.value == undefined || data.description.value == '') {
-                        bookDescription = data.description;
-                    } else {
-                        bookDescription = data.description.value;
-                    }
-                    item.classList.add('opened')
-                    detailsDev = document.createElement('div');
-                    detailsDev.classList.add('detailsShown', 'ibm-plex-sans-regular');
-                    detailsDev.innerHTML = bookDescription;
-    
-                    item.parentElement.appendChild(detailsDev);
-                })
-            }
-        })
-    })
-}
-
-export default showResult;
-*/
-
 
 function showResult() {
   var arrowButton = document.querySelectorAll('button.arrowButton');
@@ -7590,7 +7546,9 @@ function showResult() {
         item.parentElement.removeChild(item.parentElement.lastChild);
       } else {
         axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(item.name).then(function (resp) {
-          if (resp.data.description && resp.data.description.value) {
+          if (!resp.data.description) {
+            createDetailsDiv('No scription found for the book: "' + resp.data.title + '".', item.parentElement);
+          } else if (resp.data.description && resp.data.description.value) {
             createDetailsDiv(resp.data.description.value, item.parentElement);
           } else {
             createDetailsDiv(resp.data.description, item.parentElement);
@@ -34503,4 +34461,4 @@ if (true) {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle7a8795726ec1da8e902c.js.map
+//# sourceMappingURL=bundlea20424109e808150a372.js.map

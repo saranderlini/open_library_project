@@ -6,7 +6,6 @@ let form = document.forms[0];
 let category = form.category;
 let cercaBtn = document.getElementById('cercaBtn');
 
-// checkInputValue(category.value.trim());
 getCategory();
 
 
@@ -28,13 +27,13 @@ cercaBtn.addEventListener('touchstart', (e) => {
 function getCategory(){
     cercaBtn.addEventListener('click', (e) => {
     backOnFocus(category);
-    if(category.value.trim() == '' || category.value.trim() == undefined) {
+    if(category.value.toLowerCase().trim() == '' || category.value.toLowerCase().trim() == undefined) {
         e.preventDefault();
         category.value = '';
         category.classList.add('error');
         category.setAttribute('placeholder', 'Please, specify a genre.');
     } else {
-        getSubject(category.value.trim());
+        getSubject(category.value.toLowerCase().trim());
     }
    })
 }
