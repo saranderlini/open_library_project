@@ -55,5 +55,11 @@ main {
                 color: $powderWhite;
             }
         }
+        .btnActive {
+            background-color: $retroGreen;
+            border-width: 2px;
+            border-color: $retroGreen;
+            color: $powderWhite;
+        }
     }
 }

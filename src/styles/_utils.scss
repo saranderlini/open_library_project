@@ -30,6 +30,10 @@
     z-index: 10;
 }
 
+.label:hover {
+    cursor: pointer;
+}
+
 .cardStyle {
     align-items: center;
     background: #fffcfcdb;
