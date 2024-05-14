@@ -7359,7 +7359,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _setTopToMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setTopToMain */ "./src/js/setTopToMain.js");
 
 
+var label = document.getElementById('label');
 function displayCategory(term) {
+  console.log("Updating label with term:", term);
+  label.innerHTML = '';
   label.classList.remove('d-none');
   label.classList.add('antonio-sans-bold', 'label');
   label.innerHTML = 'Search results for: ' + term;
@@ -7382,16 +7385,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var isEventListenerAdded = false;
+
+// Define the function outside to maintain a reference
+function handleLabelClick(event) {
+  var element = event.target;
+  var term = element.getAttribute('data-term'); // Use a data attribute to store the term
+  if (element.innerText !== '') {
+    element.innerText = '';
+  } else {
+    element.innerText = 'Search results for: ' + term;
+  }
+}
 function labelSlide(elemID, term) {
   var element = document.getElementById(elemID);
+  element.setAttribute('data-term', term);
   if (!isEventListenerAdded) {
-    element.addEventListener('click', function () {
-      if (element.innerText !== '') {
-        element.innerText = '';
-      } else {
-        element.innerText = 'Search results for: ' + term;
-      }
-    });
+    element.addEventListener('click', handleLabelClick);
     isEventListenerAdded = true;
   }
   element.innerText = '';
@@ -7420,7 +7429,6 @@ __webpack_require__.r(__webpack_exports__);
 var form = document.forms[0];
 var category = form.category;
 var cercaBtn = document.getElementById('cercaBtn');
-getCategory();
 
 //allows for search to be initiated by pressing enter 
 category.addEventListener('keypress', function (e) {
@@ -7442,13 +7450,17 @@ cercaBtn.addEventListener('touchstart', function (e) {
 function getCategory() {
   cercaBtn.addEventListener('click', function (e) {
     backOnFocus(category);
-    if (category.value.toLowerCase().trim() == '' || category.value.toLowerCase().trim() == undefined) {
+    var categoryValueTrimmed = category.value.toLowerCase().trim();
+    if (categoryValueTrimmed == '' || categoryValueTrimmed == undefined) {
       e.preventDefault();
       category.value = '';
       category.classList.add('error');
       category.setAttribute('placeholder', 'Please, specify a genre.');
     } else {
-      (0,_processResponse__WEBPACK_IMPORTED_MODULE_1__["default"])(category.value.toLowerCase().trim());
+      if (categoryValueTrimmed.indexOf(' ') > 1) {
+        categoryValueTrimmed = categoryValueTrimmed.replace(' ', '_');
+      }
+      (0,_processResponse__WEBPACK_IMPORTED_MODULE_1__["default"])(categoryValueTrimmed);
     }
   });
 }
@@ -7460,6 +7472,7 @@ function backOnFocus(field) {
     field.classList.remove('error');
   }
 }
+getCategory();
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getCategory);
 
 /***/ }),
@@ -7498,10 +7511,13 @@ function getSubject(key) {
     var writers = '';
     var bookEndPoint = '';
     if (works.length == 0) {
+      if (key.indexOf('_') > 1) {
+        key = key.replace('_', ' ');
+      }
       alert("The search for ".concat(key, " has not produced any result."));
       document.getElementById('category').value = '';
     } else {
-      (0,_displayCategory__WEBPACK_IMPORTED_MODULE_4__["default"])(key);
+      (0,_displayCategory__WEBPACK_IMPORTED_MODULE_4__["default"])(key.replace('_', ' '));
       for (var i = 0; i < works.length; i++) {
         caption = works[i].title;
         bookEndPoint = 'https://openlibrary.org' + works[i].key;
@@ -7548,11 +7564,12 @@ function searchReset() {
     if (event.target.id === 'navBar' || event.target.id == 'lensSearch') {
       document.getElementById('header').classList.remove('headerOnSearch');
       document.getElementById('label').classList.add('d-none');
-      document.getElementById('label').innerHTML = '';
+      document.getElementById('label').innerText = '';
       document.getElementById('responseDiv').innerHTML = '';
       document.querySelector('div.formDiv').classList.remove('d-none');
       var category = document.getElementById('category');
       category.value = '';
+
       // Remove the navBar and searchInfo elements
       event.target.remove();
     }
@@ -34555,4 +34572,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle9829b0f7192ddada8448.js.map
+//# sourceMappingURL=bundle0b71e06109b71620b2e4.js.map
