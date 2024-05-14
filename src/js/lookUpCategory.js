@@ -6,9 +6,6 @@ let form = document.forms[0];
 let category = form.category;
 let cercaBtn = document.getElementById('cercaBtn');
 
-getCategory();
-
-
 //allows for search to be initiated by pressing enter 
 category.addEventListener('keypress', (e) => {
     if(e.key === 'Enter') {
@@ -29,13 +26,18 @@ cercaBtn.addEventListener('touchstart', (e) => {
 function getCategory(){
     cercaBtn.addEventListener('click', (e) => {
     backOnFocus(category);
-    if(category.value.toLowerCase().trim() == '' || category.value.toLowerCase().trim() == undefined) {
+    let categoryValueTrimmed = category.value.toLowerCase().trim();
+
+    if(categoryValueTrimmed == '' || categoryValueTrimmed == undefined) {
         e.preventDefault();
         category.value = '';
         category.classList.add('error');
         category.setAttribute('placeholder', 'Please, specify a genre.');
-    } else {
-        getSubject(category.value.toLowerCase().trim());
+    } else {   
+        if(categoryValueTrimmed.indexOf(' ') > 1){
+            categoryValueTrimmed = categoryValueTrimmed.replace(' ', '_');
+        }
+        getSubject(categoryValueTrimmed);
     }
    })
 }
@@ -47,6 +49,8 @@ function backOnFocus(field){
         field.classList.remove('error');
     }
 }
-    
+
+getCategory();
+
 export default getCategory;
     
