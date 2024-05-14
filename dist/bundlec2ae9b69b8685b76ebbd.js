@@ -7433,7 +7433,6 @@ var cercaBtn = document.getElementById('cercaBtn');
 //allows for search to be initiated by pressing enter 
 category.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
-    cercaBtn.classList.add('btnActive');
     e.preventDefault();
     cercaBtn.click();
   }
@@ -7441,7 +7440,6 @@ category.addEventListener('keypress', function (e) {
 
 //allows for search to be initiated by pressing enter 
 cercaBtn.addEventListener('touchstart', function (e) {
-  cercaBtn.classList.add('btnActive');
   e.preventDefault();
   cercaBtn.click();
 });
@@ -7460,6 +7458,7 @@ function getCategory() {
       if (categoryValueTrimmed.indexOf(' ') > 1) {
         categoryValueTrimmed = categoryValueTrimmed.replace(' ', '_');
       }
+      cercaBtn.classList.add('btnActive');
       (0,_processResponse__WEBPACK_IMPORTED_MODULE_1__["default"])(categoryValueTrimmed);
     }
   });
@@ -7470,6 +7469,9 @@ function backOnFocus(field) {
   category.setAttribute('placeholder', '');
   if (field.classList.contains('error')) {
     field.classList.remove('error');
+  }
+  if (cercaBtn.classList.contains('btnActive')) {
+    cercaBtn.classList.remove('btnActive');
   }
 }
 getCategory();
@@ -7516,6 +7518,7 @@ function getSubject(key) {
       }
       alert("The search for ".concat(key, " has not produced any result."));
       document.getElementById('category').value = '';
+      document.getElementById('cercaBtn').classList.remove('btnActive');
     } else {
       (0,_displayCategory__WEBPACK_IMPORTED_MODULE_4__["default"])(key.replace('_', ' '));
       for (var i = 0; i < works.length; i++) {
@@ -34572,4 +34575,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle0b71e06109b71620b2e4.js.map
+//# sourceMappingURL=bundlec2ae9b69b8685b76ebbd.js.map
