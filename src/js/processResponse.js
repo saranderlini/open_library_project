@@ -4,10 +4,8 @@ import setTop from "./setTopToMain";
 import createCard from "./createCard";
 import showResult from "./showResult";
 import displayCategory from "./displayCategory";
-import labelHeight from './displayCategory';
 import { data } from "jquery";
 
-let labelOffsetHeight = labelHeight;
 function getSubject(key){
     axios.get(`https://openlibrary.org/subjects/${key}.json`).then(resp => {
         let data = resp.data; 
