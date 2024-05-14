@@ -14,10 +14,14 @@ function getSubject(key){
         let writers = '';
         let bookEndPoint = '';
         if(works.length == 0) {
+            if(key.indexOf('_') > 1){
+                key = key.replace('_', ' ');
+            }
+
             alert(`The search for ${key} has not produced any result.`);
             document.getElementById('category').value = '';
         } else {
-            displayCategory(key);
+            displayCategory(key.replace('_', ' '));
 
             for(let i = 0; i < works.length; i++){
             caption = works[i].title;
