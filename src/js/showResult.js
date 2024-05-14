@@ -8,7 +8,7 @@ function showResult(){
                 item.classList.remove('opened');
                 item.parentElement.removeChild(item.parentElement.lastChild);
             } else {
-                axios.get(item.name)
+                axios.get(item.name + '.json')
                 .then(resp => {
                     if(!resp.data.description){
                         createDetailsDiv('No scription found for the book: "' + resp.data.title + '".', item.parentElement);

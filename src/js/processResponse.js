@@ -22,7 +22,7 @@ function getSubject(key){
             displayCategory(key);
 
             for(let i = 0; i < works.length; i++){
-                caption = works[i].title;
+            caption = works[i].title;
             bookEndPoint = 'https://openlibrary.org' + works[i].key;
             if(works[i].authors.length > 1){
                 for(let j = 1; j < works[i].authors.length; j++){
@@ -37,16 +37,12 @@ function getSubject(key){
         }
 
         document.querySelector('div.formDiv').classList.add('d-none');
+        if(document.getElementById('cercaBtn').classList.contains('btnActive')){
+            document.getElementById('cercaBtn').classList.remove('btnActive');
+        }
         
         addNavBar();
-        if(window.innerWidth <= 576){
-            setTop(document.getElementById('responseDiv'), 55);
-        } else if(window.innerWidth >= 577 && window.innerHeight <= 768) {
-            setTop(document.getElementById('responseDiv'), 40);
-        }
-         else {
-            setTop(document.getElementById('responseDiv'), 0);
-        }
+        setTop(document.getElementById('responseDiv'), 0);
         showResult();
         }   
     })

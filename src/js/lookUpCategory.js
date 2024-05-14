@@ -12,6 +12,7 @@ getCategory();
 //allows for search to be initiated by pressing enter 
 category.addEventListener('keypress', (e) => {
     if(e.key === 'Enter') {
+        cercaBtn.classList.add('btnActive');
         e.preventDefault();
         cercaBtn.click();
     }
@@ -19,6 +20,7 @@ category.addEventListener('keypress', (e) => {
 
 //allows for search to be initiated by pressing enter 
 cercaBtn.addEventListener('touchstart', (e) => {
+    cercaBtn.classList.add('btnActive');
     e.preventDefault();
     cercaBtn.click();
 })
