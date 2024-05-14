@@ -9,7 +9,6 @@ let cercaBtn = document.getElementById('cercaBtn');
 //allows for search to be initiated by pressing enter 
 category.addEventListener('keypress', (e) => {
     if(e.key === 'Enter') {
-        cercaBtn.classList.add('btnActive');
         e.preventDefault();
         cercaBtn.click();
     }
@@ -17,7 +16,6 @@ category.addEventListener('keypress', (e) => {
 
 //allows for search to be initiated by pressing enter 
 cercaBtn.addEventListener('touchstart', (e) => {
-    cercaBtn.classList.add('btnActive');
     e.preventDefault();
     cercaBtn.click();
 })
@@ -37,6 +35,7 @@ function getCategory(){
         if(categoryValueTrimmed.indexOf(' ') > 1){
             categoryValueTrimmed = categoryValueTrimmed.replace(' ', '_');
         }
+        cercaBtn.classList.add('btnActive');
         getSubject(categoryValueTrimmed);
     }
    })
@@ -47,6 +46,9 @@ function backOnFocus(field){
     category.setAttribute('placeholder', '');
     if(field.classList.contains('error')){
         field.classList.remove('error');
+    }
+    if(cercaBtn.classList.contains('btnActive')){
+        cercaBtn.classList.remove('btnActive');
     }
 }
 
