@@ -20,6 +20,7 @@ function getSubject(key){
 
             alert(`The search for ${key} has not produced any result.`);
             document.getElementById('category').value = '';
+            document.getElementById('cercaBtn').classList.remove('btnActive');
         } else {
             displayCategory(key.replace('_', ' '));
 
