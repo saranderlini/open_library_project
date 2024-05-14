@@ -7355,36 +7355,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _setTopToMain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setTopToMain */ "./src/js/setTopToMain.js");
+/* harmony import */ var _labelSlide__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./labelSlide */ "./src/js/labelSlide.js");
+/* harmony import */ var _setTopToMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setTopToMain */ "./src/js/setTopToMain.js");
+
 
 function displayCategory(term) {
-  document.getElementById('id', 'label');
   label.classList.remove('d-none');
   label.classList.add('antonio-sans-bold', 'label');
   label.innerHTML = 'Search results for: ' + term;
-  (0,_setTopToMain__WEBPACK_IMPORTED_MODULE_0__["default"])(label, 0);
-  labelHover(document.getElementById('label'));
-  labelSlide(term);
-}
-function labelSlide(term) {
-  document.getElementById('label').innerHTML = '';
-  document.getElementById('label').addEventListener('click', function () {
-    if (document.getElementById('label').innerHTML == '') {
-      document.getElementById('label').innerHTML = 'Search results for: ' + term;
-    } else {
-      document.getElementById('label').innerHTML = '';
-    }
-  });
-}
-function labelHover(target) {
-  target.addEventListener('mouseenter', function () {
-    target.click();
-  });
-  target.addEventListener('mouseleave', function () {
-    target.innerHTML = '';
-  });
+  (0,_setTopToMain__WEBPACK_IMPORTED_MODULE_1__["default"])(label, 0);
+  (0,_labelSlide__WEBPACK_IMPORTED_MODULE_0__["default"])('label', term);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (displayCategory);
+
+/***/ }),
+
+/***/ "./src/js/labelSlide.js":
+/*!******************************!*\
+  !*** ./src/js/labelSlide.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var isEventListenerAdded = false;
+function labelSlide(elemID, term) {
+  var element = document.getElementById(elemID);
+  if (!isEventListenerAdded) {
+    element.addEventListener('click', function () {
+      if (element.innerText !== '') {
+        element.innerText = '';
+      } else {
+        element.innerText = 'Search results for: ' + term;
+      }
+    });
+    isEventListenerAdded = true;
+  }
+  element.innerText = '';
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (labelSlide);
 
 /***/ }),
 
@@ -7478,8 +7490,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var labelOffsetHeight = _displayCategory__WEBPACK_IMPORTED_MODULE_4__["default"];
 function getSubject(key) {
   axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("https://openlibrary.org/subjects/".concat(key, ".json")).then(function (resp) {
     var data = resp.data;
@@ -7538,6 +7548,7 @@ function searchReset() {
     if (event.target.id === 'navBar' || event.target.id == 'lensSearch') {
       document.getElementById('header').classList.remove('headerOnSearch');
       document.getElementById('label').classList.add('d-none');
+      document.getElementById('label').innerHTML = '';
       document.getElementById('responseDiv').innerHTML = '';
       document.querySelector('div.formDiv').classList.remove('d-none');
       var category = document.getElementById('category');
@@ -34544,4 +34555,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlea4287c873b6ea2609ca0.js.map
+//# sourceMappingURL=bundle9829b0f7192ddada8448.js.map
