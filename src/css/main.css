@@ -161,6 +161,26 @@ p {
   visibility: collapse;
 }
 
+.label {
+  background-color: #fff4db;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 3px solid #868686;
+  box-shadow: 0 6px 15px rgba(37, 41, 45, 0.6);
+  border-left: none;
+  color: #212121;
+  display: flex;
+  font-size: 1.5rem;
+  padding: 1.5rem 2rem;
+  position: fixed;
+  text-transform: capitalize;
+  z-index: 10;
+}
+
+.label:hover {
+  cursor: pointer;
+}
+
 .cardStyle {
   align-items: center;
   background: rgba(255, 252, 252, 0.8588235294);
@@ -238,6 +258,9 @@ p {
   transition: opacity 0.3s ease;
   opacity: 1;
 }
+.headerOnSearch #lensSearch:hover {
+  cursor: pointer;
+}
 .headerOnSearch .searchInfo {
   position: relative;
   font-family: "Antonio", sans-serif;
@@ -266,7 +289,7 @@ p {
   right: 0;
   z-index: -1;
   display: block;
-  background-image: url("../assets/bg-retro.png");
+  background-image: url("../img/bg-retro.png");
   background-size: cover;
   height: 100%;
 }
@@ -324,15 +347,19 @@ main .form .btnSearch:active {
   border-color: #3c7f72;
   color: #e4e4e4;
 }
+main .form .btnActive {
+  background-color: #3c7f72;
+  border-width: 2px;
+  border-color: #3c7f72;
+  color: #e4e4e4;
+}
 
-/* Small devices (mobile phones, 0 and up) */
-/* No media query since this is the default in Foundation */
 @media only screen and (min-width: 577px) and (max-width: 768px) {
   header h1 {
     font-size: 2rem;
   }
   header.headerOnSearch {
-    padding: 0.6rem 2.5rem;
+    padding: 1.5rem 2.5rem;
   }
   header.headerOnSearch h1 {
     font-size: 2rem;
@@ -365,7 +392,7 @@ main .form .btnSearch:active {
     font-size: 2.5rem;
   }
   header.headerOnSearch {
-    padding: 0.6rem 2.5rem;
+    padding: 1rem 2.5rem;
   }
   header.headerOnSearch h1 {
     font-size: 2rem;
@@ -383,14 +410,14 @@ main .form .btnSearch:active {
 }
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
   header h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     padding: 3rem;
   }
   header.headerOnSearch {
-    padding: 0.6rem 2.5rem;
+    padding: 1rem 2.5rem;
   }
   header.headerOnSearch h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   .formDiv {
     position: relative;
@@ -426,14 +453,17 @@ main .form .btnSearch:active {
 }
 @media only screen and (min-width: 1201px) and (max-width: 1400px) {
   header h1 {
-    font-size: 4rem;
-    padding: 4rem;
+    font-size: 2rem;
+    padding: 1.5rem;
   }
   header.headerOnSearch {
-    padding: 2rem 6rem;
+    padding: 1rem 6rem;
   }
   header.headerOnSearch h1 {
     font-size: 3.5rem;
+  }
+  .label {
+    margin-top: 0.5rem;
   }
   .formDiv {
     position: relative;
